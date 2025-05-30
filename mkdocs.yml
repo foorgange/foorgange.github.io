@@ -1,4 +1,20 @@
-site_name: My Site
+site_name: snowfoootball
 site_url: https://foorgange.github.io/
+
 theme:
   name: material
+
+plugins:
+  - search
+  - blogging
+  - callouts
+  - minify:
+      minify_html: true
+  - git-revision-date-localized
+  - glightbox
+  - statistics
+  - awesome-pages
+  - literate-nav
+  - mermaid2
+  - table-reader
+  - encryptcontent
