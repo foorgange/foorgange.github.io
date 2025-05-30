@@ -1,275 +1,196 @@
+<!-- 
+{% if page and page.meta %}
+  DEBUG_EXTRA_CLASSES_RAW: {{ page.meta.extra_classes }}
+  DEBUG_EXTRA_CLASSES_JOINED: "{{ page.meta.extra_classes | join(' ') }}"
+{% else %}
+  DEBUG: page or page.meta is undefined for this page (e.g., 404.html)
+{% endif %}
+-->
 {% extends "base.html" %}
 
-{% block extrahead %}
-  <!-- 自定义头部内容 -->
-  <meta name="description" content="snowfoootball的个人博客 - 探索技术的边界，记录生活的美好">
-  <meta name="keywords" content="技术博客,编程,算法,文学,个人博客,snowfoootball">
-  <meta name="author" content="snowfoootball">
-  
-  <!-- Open Graph 标签 -->
-  <meta property="og:title" content="{{ config.site_name }}">
-  <meta property="og:description" content="探索技术的边界，记录生活的美好">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ config.site_url }}">
-  
-  <!-- 自定义字体 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- 自定义图标 -->
-  <link rel="icon" type="image/svg+xml" href="{{ 'assets/images/favicon.svg' | url }}">
-  
-  <!-- 预加载关键资源 -->
-  <link rel="preload" href="{{ 'assets/stylesheets/extra.css' | url }}" as="style">
-  <link rel="preload" href="{{ 'assets/stylesheets/background.css' | url }}" as="style">
-  
-  <!-- 自定义导航栏样式 -->
-  <style>
-    .md-header {
-      background-color: #1a1a1a !important;
-    }
-    .md-tabs {
-      background-color: #1a1a1a !important;
-    }
-    .md-tabs__item {
-      margin: 0 1rem;
-    }
-    .md-tabs__link {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 500;
-    }
-    .nav-icon {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-    }
-    /* 简化统计信息显示 */
-    .md-source-file__fact {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .md-source-file__fact .md-icon {
-      width: 14px;
-      height: 14px;
-    }
-  </style>
+{% block hero %}
+  {{ super() }} {# This preserves any hero content the page might already have #}
+  {% if page and page.meta and page.meta.home %}
+    <script>
+      document.body.classList.add('homepage');
+    </script>
+    <div id="vinyl-player-wrapper-home" class="vinyl-player-instance">
+      <div id="vinyl-disk-rotator-home" class="vinyl-disk"></div>
+      <div id="play-pause-button-home" class="play-pause-btn paused"></div>
+    </div>
+    <audio id="custom-background-audio-home" loop>
+      {# Ensure 'audio/Cherish.mp3' matches the path and name of the file you placed in step 1 #}
+      <source src="{{ 'audio/Cherish.mp3' | url }}" type="audio/mpeg">
+      您的浏览器不支持音频播放。
+    </audio>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const audio_home = document.getElementById('custom-background-audio-home');
+        const playPauseButton_home = document.getElementById('play-pause-button-home');
+        const vinylDiskRotator_home = document.getElementById('vinyl-disk-rotator-home');
+
+        if (playPauseButton_home && audio_home && vinylDiskRotator_home) {
+          playPauseButton_home.addEventListener('click', function() {
+            if (audio_home.paused || audio_home.ended) {
+              audio_home.play().then(() => {
+                playPauseButton_home.classList.remove('paused');
+                playPauseButton_home.classList.add('playing');
+                vinylDiskRotator_home.style.animationPlayState = 'running';
+              }).catch(error => console.error("Error playing audio on home:", error));
+            } else {
+              audio_home.pause();
+              playPauseButton_home.classList.remove('playing');
+              playPauseButton_home.classList.add('paused');
+              vinylDiskRotator_home.style.animationPlayState = 'paused';
+            }
+          });
+
+          audio_home.addEventListener('ended', function() {
+            playPauseButton_home.classList.remove('playing');
+            playPauseButton_home.classList.add('paused');
+            vinylDiskRotator_home.style.animationPlayState = 'paused';
+            audio_home.currentTime = 0;
+          });
+
+          audio_home.addEventListener('pause', function() {
+            if (!audio_home.ended) {
+                playPauseButton_home.classList.remove('playing');
+                playPauseButton_home.classList.add('paused');
+                vinylDiskRotator_home.style.animationPlayState = 'paused';
+            }
+          });
+
+           audio_home.addEventListener('play', function() {
+                playPauseButton_home.classList.remove('paused');
+                playPauseButton_home.classList.add('playing');
+                vinylDiskRotator_home.style.animationPlayState = 'running';
+          });
+
+          audio_home.play().then(() => {
+            playPauseButton_home.classList.remove('paused');
+            playPauseButton_home.classList.add('playing');
+            vinylDiskRotator_home.style.animationPlayState = 'running';
+          }).catch(error => {
+            console.error("Autoplay failed on home:", error);
+            playPauseButton_home.classList.remove('playing');
+            playPauseButton_home.classList.add('paused');
+            vinylDiskRotator_home.style.animationPlayState = 'paused';
+          });
+
+        } else {
+          if (document.body.classList.contains('homepage')) { // Check class instead of attribute
+             console.error('Home audio player elements not found!');
+          }
+        }
+      });
+    </script>
+  {% endif %}
+
+  {% if page and page.meta and page.meta.about_player %}
+    <div id="vinyl-player-wrapper-about" class="vinyl-player-instance">
+      <div id="vinyl-disk-rotator-about" class="vinyl-disk"></div>
+      <div id="play-pause-button-about" class="play-pause-btn paused"></div>
+    </div>
+    <audio id="custom-background-audio-about">
+      <!-- <source src="{{ 'audio/About/Everything\'sAlright.mp3' | url }}" type="audio/mpeg"> -->
+      您的浏览器不支持音频播放。
+    </audio>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const audio_about = document.getElementById('custom-background-audio-about');
+        const playPauseButton_about = document.getElementById('play-pause-button-about');
+        const vinylDiskRotator_about = document.getElementById('vinyl-disk-rotator-about');
+
+        const aboutPlaylist = [
+          { src: "{{ 'audio/About/FindingParadise.mp3' | url }}" }, 
+          { src: "{{ 'audio/About/Everything\'sAlright.mp3' | url }}" }
+        ];
+        let currentTrackIndex_about = 0;
+
+        function loadTrack_about(trackIndex) {
+          if (!audio_about) return;
+          audio_about.src = aboutPlaylist[trackIndex].src;
+          audio_about.load();
+          // Cover is fixed by CSS, no JS update needed for cover based on Strategy A
+        }
+
+        if (playPauseButton_about && audio_about && vinylDiskRotator_about) {
+          loadTrack_about(currentTrackIndex_about); // Load the first track initially
+
+          playPauseButton_about.addEventListener('click', function() {
+            // Ensure the current track is loaded if src is not set or different
+            if (!audio_about.src || audio_about.currentSrc !== aboutPlaylist[currentTrackIndex_about].src) {
+                loadTrack_about(currentTrackIndex_about);
+            }
+            if (audio_about.paused || audio_about.ended) {
+              audio_about.play().then(() => {
+                playPauseButton_about.classList.remove('paused');
+                playPauseButton_about.classList.add('playing');
+                vinylDiskRotator_about.style.animationPlayState = 'running';
+              }).catch(error => console.error("Error playing audio on about:", error));
+            } else {
+              audio_about.pause();
+              playPauseButton_about.classList.remove('playing');
+              playPauseButton_about.classList.add('paused');
+              vinylDiskRotator_about.style.animationPlayState = 'paused';
+            }
+          });
+
+          audio_about.addEventListener('ended', function() {
+            currentTrackIndex_about++;
+            if (currentTrackIndex_about >= aboutPlaylist.length) {
+              currentTrackIndex_about = 0; // Loop back to the first track
+            }
+            loadTrack_about(currentTrackIndex_about);
+            audio_about.play().then(() => {
+                playPauseButton_about.classList.remove('paused');
+                playPauseButton_about.classList.add('playing');
+                vinylDiskRotator_about.style.animationPlayState = 'running';
+            }).catch(error => console.error("Error auto-playing next track on about:", error));
+          });
+
+          audio_about.addEventListener('pause', function() {
+            if (!audio_about.ended) {
+                playPauseButton_about.classList.remove('playing');
+                playPauseButton_about.classList.add('paused');
+                vinylDiskRotator_about.style.animationPlayState = 'paused';
+            }
+          });
+
+           audio_about.addEventListener('play', function() {
+                playPauseButton_about.classList.remove('paused');
+                playPauseButton_about.classList.add('playing');
+                vinylDiskRotator_about.style.animationPlayState = 'running';
+          });
+
+          // Autoplay the first track (after it's loaded by loadTrack_about above)
+          audio_about.play().then(() => {
+            playPauseButton_about.classList.remove('paused');
+            playPauseButton_about.classList.add('playing');
+            vinylDiskRotator_about.style.animationPlayState = 'running';
+          }).catch(error => {
+            // console.error("Autoplay failed on about:", error); // Autoplay might be blocked
+            // UI should remain in loaded & paused state if autoplay fails silently
+            if (audio_about.paused) { // Ensure UI reflects actual state
+                playPauseButton_about.classList.remove('playing');
+                playPauseButton_about.classList.add('paused');
+                vinylDiskRotator_about.style.animationPlayState = 'paused';
+            }
+          });
+
+        } else {
+          console.error('About page audio player elements not found (or page.meta.about_player is false at JS execution time)!');
+        }
+      });
+    </script>
+  {% endif %}
 {% endblock %}
 
-{% block scripts %}
-  {{ super() }}
-  
-  <!-- 自定义JavaScript -->
-  <script>
-    // 页面加载完成后的初始化
-    document.addEventListener('DOMContentLoaded', function() {
-      // 添加页面加载动画
-      document.body.classList.add('page-loaded');
-      
-      // 平滑滚动
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-      
-      // 代码块复制功能增强
-      enhanceCodeBlocks();
-      
-      // 图片懒加载
-      if ('IntersectionObserver' in window) {
-        lazyLoadImages();
-      }
-    });
-    
-    // 增强代码块功能
-    function enhanceCodeBlocks() {
-      const codeBlocks = document.querySelectorAll('pre code');
-      codeBlocks.forEach(block => {
-        // 添加行号
-        if (!block.classList.contains('no-line-numbers')) {
-          addLineNumbers(block);
-        }
-        
-        // 添加语言标签
-        addLanguageLabel(block);
-      });
-    }
-    
-    // 添加行号
-    function addLineNumbers(codeBlock) {
-      const lines = codeBlock.textContent.split('\n');
-      if (lines.length > 1) {
-        const lineNumbers = lines.map((_, index) => 
-          `<span class="line-number">${index + 1}</span>`
-        ).join('');
-        
-        const lineNumbersDiv = document.createElement('div');
-        lineNumbersDiv.className = 'line-numbers';
-        lineNumbersDiv.innerHTML = lineNumbers;
-        
-        const pre = codeBlock.parentElement;
-        pre.style.position = 'relative';
-        pre.insertBefore(lineNumbersDiv, codeBlock);
-      }
-    }
-    
-    // 添加语言标签
-    function addLanguageLabel(codeBlock) {
-      const className = codeBlock.className;
-      const languageMatch = className.match(/language-(\w+)/);
-      
-      if (languageMatch) {
-        const language = languageMatch[1];
-        const label = document.createElement('div');
-        label.className = 'code-language-label';
-        label.textContent = language.toUpperCase();
-        
-        const pre = codeBlock.parentElement;
-        pre.style.position = 'relative';
-        pre.appendChild(label);
-      }
-    }
-    
-    // 图片懒加载
-    function lazyLoadImages() {
-      const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src;
-            img.classList.remove('lazy');
-            imageObserver.unobserve(img);
-          }
-        });
-      });
-      
-      document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-      });
-    }
-    
-    // 主题切换动画
-    const themeToggle = document.querySelector('[data-md-component="palette"]');
-    if (themeToggle) {
-      themeToggle.addEventListener('change', function() {
-        document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-        setTimeout(() => {
-          document.body.style.transition = '';
-        }, 300);
-      });
-    }
-  </script>
-  
-  <!-- 页面性能监控 -->
-  <script>
-    // 简单的性能监控
-    window.addEventListener('load', function() {
-      if ('performance' in window) {
-        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-        console.log(`页面加载时间: ${loadTime}ms`);
-        
-        // 如果加载时间过长，显示提示
-        if (loadTime > 3000) {
-          console.warn('页面加载较慢，建议优化资源');
-        }
-      }
-    });
-  </script>
-{% endblock %}
-
-{% block styles %}
-  {{ super() }}
-  
-  <!-- 页面加载动画样式 -->
-  <style>
-    body {
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    body.page-loaded {
-      opacity: 1;
-    }
-    
-    /* 代码块增强样式 */
-    .line-numbers {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3em;
-      background: rgba(0, 0, 0, 0.1);
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1.5rem 0.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8em;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.5);
-      user-select: none;
-    }
-    
-    .line-number {
-      display: block;
-      text-align: right;
-    }
-    
-    .code-language-label {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 0.2rem 0.5rem;
-      border-radius: 3px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    /* 有行号的代码块需要左边距 */
-    pre:has(.line-numbers) code {
-      padding-left: 4em;
-    }
-    
-    /* 图片懒加载样式 */
-    img.lazy {
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    
-    img:not(.lazy) {
-      opacity: 1;
-    }
-    
-    /* 滚动条美化 */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.1);
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(45deg, #667eea, #764ba2);
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(45deg, #f093fb, #f5576c);
-    }
-  </style>
+{# 在页面主要内容之后，页脚之前插入评论区 #}
+{% block content_footer %}
+  {{ super() }} {# 保留主题原有的 content_footer 内容 #}
+  {% if page and page.meta and page.meta.comments %}
+    {% include "partials/comment.html" %}
+  {% endif %}
 {% endblock %}

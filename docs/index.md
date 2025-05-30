@@ -1,48 +1,61 @@
 ---
-title: 欢迎来到 snowfoootball 的个人博客
 hide:
+  - date
   - navigation
   - toc
+# template: home.html # Removed this due to 'home.html' not found error
+home: true
+nostatistics: true
+comments: false
+icon: fontawesome/solid/house
+extra_classes:
+  - homepage
 ---
 
-<div class="hero-section" id="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">Welcome to My Digital Garden</h1>
-    <p class="hero-subtitle">探索技术的边界，记录生活的美好</p>
-  </div>
+<br><br><br>
+<div class="hero-section">
+  <h1 style="text-align: center; font-size: 3em; letter-spacing: 0.1em;">欢迎来到路人蛃的博客🥳</h1>
+  <p id="typing-effect" style="text-align: center; font-size: 1.5em; letter-spacing: 0.05em;"></p>
+  <!-- 您可以在这里添加更多介绍性文字或按钮 -->
 </div>
 
-<style>
-.hero-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
-  color: white;
-}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const textElement = document.getElementById('typing-effect');
+  const textsToAnimate = [
+    "Only through hell can one create heaven.",
+    "Only with bleeding fingers can one play the world\'s most sublime tunes."
+  ];
+  let currentTextIndex = 0;
+  let index = 0;
+  let isDeleting = false;
 
-.hero-content {
-  max-width: 800px;
-  z-index: 2;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-}
-</style>
+  function typeWriter() {
+    const currentText = textsToAnimate[currentTextIndex];
+    if (!isDeleting && index < currentText.length) {
+      textElement.innerHTML = currentText.substring(0, index + 1) + '<span class="cursor"></span>';
+      index++;
+      setTimeout(typeWriter, 60); // Faster typing
+    } else if (isDeleting && index > 0) {
+      textElement.innerHTML = currentText.substring(0, index - 1) + '<span class="cursor"></span>';
+      index--;
+      setTimeout(typeWriter, 30); // Faster deleting
+    } else if (!isDeleting && index === currentText.length) {
+      // Pause at the end of typing
+      setTimeout(() => {
+        isDeleting = true;
+        setTimeout(typeWriter, 500); // Wait before deleting
+      }, 2000);
+    } else if (isDeleting && index === 0) {
+      isDeleting = false;
+      currentTextIndex = (currentTextIndex + 1) % textsToAnimate.length; // Move to the next text
+      // Pause before typing again
+      setTimeout(() => {
+          index = 0; // Reset index to start typing from the beginning
+          setTimeout(typeWriter, 500); // Wait before re-typing
+      }, 1000);
+    }
+  }
+  typeWriter();
+});
+</script>

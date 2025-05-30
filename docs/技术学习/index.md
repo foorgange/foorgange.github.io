@@ -1,21 +1,12 @@
-# 技术学习
-
-欢迎来到技术学习板块！这里记录了我在技术路上的学习心得和实践经验。
-
-## 分类导航
-
-###  [人工智能](人工智能/index.md)
-深度学习、机器学习、AI应用开发等相关内容
-
-### [前后端](前后端/index.md)
-Web开发、前端框架、后端技术栈等
-
-###  [算法](算法/index.md)
-数据结构与算法、竞赛编程、算法题解
-
-### [其它](其它/index.md)
-其他技术相关的学习笔记和心得
-
 ---
+icon: /fontawesome/solid/calendar-check
+nostatistics: true
+comments: true
+---
+# 算法 
 
-> **学习格言**: 代码如诗，技术如画，每一行代码都是对美好未来的憧憬。
+!!! note ""
+    <div align="center" style="font-size:32px;font-weight:bold">
+        
+
+    <br><br>
