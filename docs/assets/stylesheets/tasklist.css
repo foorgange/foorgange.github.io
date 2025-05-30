@@ -48,7 +48,7 @@
 
 /* 复选框勾选标记 */
 .task-list-item-checkbox:checked + label::after {
-  content: '✓';
+  content: '✔';
   position: absolute;
   left: 0.15rem;
   top: 0.1rem;

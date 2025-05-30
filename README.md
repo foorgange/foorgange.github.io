@@ -1,22 +1,22 @@
-# 🌟 Snowfoootball's Personal Blog
+# Snowfoootball's Personal Blog
 
 > 探索技术的边界，记录生活的美好
 
 这是一个基于 Material for MkDocs 构建的个人博客网站，采用现代化的设计风格，支持响应式布局和暗黑模式切换。
 
-## ✨ 特色功能
+## 特色功能
 
-- 🎨 **现代化设计**: 采用 Material Design 风格，支持日夜模式切换
-- 🖼️ **动态背景**: 32张精美背景图片自动轮换，不同页面使用不同图片集
-- 📱 **响应式布局**: 完美适配桌面端、平板和移动设备
-- 🔍 **全文搜索**: 支持中文搜索，快速定位内容
-- 📊 **阅读统计**: 显示文章字数和预计阅读时间
-- 🎯 **代码高亮**: 支持多种编程语言语法高亮
-- 📝 **数学公式**: 支持 LaTeX 数学公式渲染
-- 🏷️ **标签系统**: 文章分类和标签管理
-- 📅 **Git 集成**: 自动显示文章创建和修改时间
+- **现代化设计**: 采用 Material Design 风格，支持日夜模式切换
+- **动态背景**: 32张精美背景图片自动轮换，不同页面使用不同图片集
+- **响应式布局**: 完美适配桌面端、平板和移动设备
+- **全文搜索**: 支持中文搜索，快速定位内容
+- **阅读统计**: 显示文章字数和预计阅读时间
+- **代码高亮**: 支持多种编程语言语法高亮
+- **数学公式**: 支持 LaTeX 数学公式渲染
+- **标签系统**: 文章分类和标签管理
+- **Git 集成**: 自动显示文章创建和修改时间
 
-## 📁 项目结构
+## 项目结构
 
 ```
 my-snowfoootball/
@@ -35,7 +35,7 @@ my-snowfoootball/
 └── README.md              # 项目说明
 ```
 
-## 🚀 快速开始
+## 快速开始
 
 ### 环境要求
 
@@ -76,7 +76,7 @@ mkdocs build
 mkdocs gh-deploy
 ```
 
-## 📝 内容管理
+## 内容管理
 
 ### 添加新文章
 
@@ -101,7 +101,7 @@ tags:
 - 编辑 `docs/assets/stylesheets/background.css` 调整背景效果
 - 更新 `docs/assets/javascripts/background-slider.js` 修改背景轮换逻辑
 
-## 🎨 主题配置
+## 主题配置
 
 项目使用 Material for MkDocs 主题，主要配置包括：
 
@@ -110,7 +110,7 @@ tags:
 - **图标**: 使用 Material Design Icons 和 FontAwesome
 - **功能**: 启用代码复制、搜索建议、导航跟踪等
 
-## 🔧 技术栈
+## 技术栈
 
 - **静态站点生成器**: MkDocs
 - **主题**: Material for MkDocs
@@ -120,7 +120,7 @@ tags:
 - **脚本**: Vanilla JavaScript
 - **图标**: Material Design Icons + FontAwesome
 
-## 📄 许可证
+## 许可证
 
 MIT License - 详见 [LICENSE](LICENSE) 文件
 
@@ -128,7 +128,7 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 
 欢迎提交 Issue 和 Pull Request！
 
-## 📞 联系方式
+## 联系方式
 
 - GitHub: [@snowfoootball](https://github.com/snowfoootball)
 - Email: your-email@example.com

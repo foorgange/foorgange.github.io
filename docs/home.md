@@ -7,15 +7,15 @@ hide:
 
 <div class="hero-section" id="hero">
   <div class="hero-content">
-    <h1 class="hero-title">🌟 Welcome to My Digital Garden</h1>
+    <h1 class="hero-title">Welcome to My Digital Garden</h1>
     <p class="hero-subtitle">探索技术的边界，记录生活的美好</p>
     <div class="hero-description">
       <p>这里是我的个人博客，记录着技术学习的点点滴滴，文学创作的心路历程，以及生活中的感悟与思考。</p>
     </div>
     <div class="hero-buttons">
-      <a href="技术学习/" class="btn btn-primary">🚀 技术探索</a>
-      <a href="文学作品/" class="btn btn-secondary">📚 文学天地</a>
-      <a href="日周记总结/" class="btn btn-accent">📝 成长记录</a>
+      <a href="技术学习/" class="btn btn-primary">技术探索</a>
+<a href="文学作品/" class="btn btn-secondary">文学天地</a>
+<a href="日周记总结/" class="btn btn-accent">成长记录</a>
     </div>
   </div>
   <div class="hero-stats">
@@ -24,11 +24,11 @@ hide:
       <div class="stat-label">学习热情</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">💡</div>
+      <div class="stat-number">Ideas</div>
       <div class="stat-label">创新思维</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">🎯</div>
+      <div class="stat-number">Goals</div>
       <div class="stat-label">目标导向</div>
     </div>
   </div>
@@ -36,20 +36,20 @@ hide:
 
 <div class="features-section">
   <div class="container">
-    <h2 class="section-title">✨ 博客特色</h2>
+    <h2 class="section-title">博客特色</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">🔬</div>
+        <div class="feature-icon">Tech</div>
         <h3>技术深度</h3>
         <p>深入探讨前沿技术，分享实战经验，从理论到实践的完整学习路径。</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎨</div>
+        <div class="feature-icon">Art</div>
         <h3>文学创作</h3>
         <p>用文字记录生活，用诗歌表达情感，在技术与人文之间寻找平衡。</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📈</div>
+        <div class="feature-icon">Growth</div>
         <h3>成长轨迹</h3>
         <p>记录每日所学所思，追踪个人成长历程，见证时间的力量。</p>
       </div>
@@ -68,7 +68,7 @@ hide:
 
 <div class="recent-section">
   <div class="container">
-    <h2 class="section-title">🔥 最近更新</h2>
+    <h2 class="section-title">最近更新</h2>
     <div class="recent-grid">
       <div class="recent-card">
         <div class="recent-category">算法</div>

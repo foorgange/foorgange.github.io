@@ -159,7 +159,7 @@ class BackgroundSlider {
       const img = new Image();
       img.onload = () => this.onImageLoaded();
       img.onerror = () => this.onImageError(imageIndex + 1);
-      img.src = `assets/images/backgrounds/${imageFiles[imageIndex]}`;
+      img.src = `../assets/images/backgrounds/${imageFiles[imageIndex]}`;
       this.images.push(img);
     }
   }

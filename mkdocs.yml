@@ -1,7 +1,7 @@
 # MkDocs 配置文件
 
 # 网站基本信息
-site_name: "🌟 Snowfoootball's Digital Garden"  # 网站标题，显示在浏览器标签页和导航栏
+site_name: "Snowfoootball's Digital Garden"  # 网站标题，显示在浏览器标签页和导航栏
 site_author: snowfoootball/李年                    # 网站作者，用于元数据
 site_description: "探索技术的边界，记录生活的美好 - 李年的个人博客网站" # 网站描述，用于搜索引擎元数据
 site_url: https://snowfoootball.github.io/my-snowfoootball/
@@ -10,7 +10,7 @@ repo_name: snowfoootball/my-snowfoootball
 edit_uri: edit/main/docs/
 
 # 严格模式，确保链接正确性
-strict: true
+# strict: true
 
 # 版权信息，显示在页脚
 copyright: Copyright &copy; 2025 李年
@@ -80,21 +80,21 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - 🏠 主页: home.md
-  - 🚀 技术学习:
+  - 主页: home.md
+  - 技术学习:
     - 技术学习/index.md
-    - 🤖 人工智能: 技术学习/人工智能/index.md
-    - 💻 前后端: 技术学习/前后端/index.md
-    - 🧮 算法: 技术学习/算法/index.md
-    - 🔧 其它: 技术学习/其它/index.md
-  - 📚 文学作品:
+    - 人工智能: 技术学习/人工智能/index.md
+    - 前后端: 技术学习/前后端/index.md
+    - 算法: 技术学习/算法/index.md
+    - 其它: 技术学习/其它/index.md
+  - 文学作品:
     - 文学作品/index.md
-    - 📖 小说: 文学作品/小说/index.md
-    - ✍️ 散文、闲谈: 文学作品/散文、闲谈/index.md
-    - 🎭 诗词古文: 文学作品/诗词古文/index.md
-  - 📝 日周记总结:
+    - 小说: 文学作品/小说/index.md
+    - 散文、闲谈: 文学作品/散文、闲谈/index.md
+    - 诗词古文: 文学作品/诗词古文/index.md
+  - 日周记总结:
     - 日周记总结/index.md
-  - 🏷️ 标签: tags.md
+  - 标签: tags.md
 
 # MkDocs 插件配置
 plugins:
@@ -106,6 +106,7 @@ plugins:
       type: datetime                 # 显示完整的日期和时间
       timezone: Asia/Shanghai        # 设置时区为上海
       enable_creation_date: true     # 同时显示页面创建日期
+      enable_git_follow: false       # 禁用git follow行为以避免时间戳警告
       exclude:                       # 排除以下页面的日期显示
         - index.md
         - home.md
@@ -137,12 +138,12 @@ markdown_extensions:
   - pymdownx.caret                   # 启用上标 (例如: H^2O)
   - pymdownx.critic                  # 启用文本批注标记 (例如: {++added++} {--removed--})
   - pymdownx.details                 # 启用可折叠的详情块 (类似于 HTML <details>)
-  - pymdownx.emoji:                  # 启用 Emoji 表情符号 (例如: :smile:)
-      emoji_index: !!python/name:pymdownx.emoji.twemoji # 使用 Twemoji 作为 Emoji 索引
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg   # 将 Emoji 渲染为 SVG 图像
-      options:
-        custom_icons:                # 自定义 Emoji 图标目录
-          - overrides/.icons         # 指向 overrides/.icons 目录，可放置自定义 SVG 图标
+  # - pymdownx.emoji:                  # 启用 Emoji 表情符号 (例如: :smile:)
+  #     emoji_index: !!python/name:pymdownx.emoji.twemoji # 使用 Twemoji 作为 Emoji 索引
+  #     emoji_generator: !!python/name:pymdownx.emoji.to_svg   # 将 Emoji 渲染为 SVG 图像
+  #     options:
+  #       custom_icons:                # 自定义 Emoji 图标目录
+  #         - overrides/.icons         # 指向 overrides/.icons 目录，可放置自定义 SVG 图标
   
   - pymdownx.highlight:              # 启用代码块语法高亮 (基于 Pygments)
       anchor_linenums: true            # 为代码块的行号添加锚点链接

@@ -33,22 +33,22 @@ jobs:
       run: |
         # 检查 mkdocs.yml 语法
         python -c "import yaml; yaml.safe_load(open('mkdocs.yml'))"
-        echo "✅ MkDocs configuration is valid"
+        echo "MkDocs configuration is valid"
     
     - name: Build documentation
       run: |
         mkdocs build --clean --strict
-        echo "✅ Documentation built successfully"
+        echo "Documentation built successfully"
     
     - name: Test links (optional)
       run: |
         # 可以添加链接检查工具
-        echo "✅ Link checking completed"
+        echo "Link checking completed"
     
     - name: Check file structure
       run: |
         # 检查必要文件是否存在
-        test -f site/index.html && echo "✅ Index page generated"
-        test -d site/assets && echo "✅ Assets directory exists"
-        test -f site/sitemap.xml && echo "✅ Sitemap generated"
-        echo "✅ File structure check completed"
+        test -f site/index.html && echo "Index page generated"
+        test -d site/assets && echo "Assets directory exists"
+        test -f site/sitemap.xml && echo "Sitemap generated"
+        echo "File structure check completed"
