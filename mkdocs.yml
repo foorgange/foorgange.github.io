@@ -83,15 +83,15 @@ nav:
   - 🏠 主页: home.md
   - 🚀 技术学习:
     - 技术学习/index.md
-    - 🤖 人工智能: 技术学习/人工智能/
-    - 💻 前后端: 技术学习/前后端/
-    - 🧮 算法: 技术学习/算法/
-    - 🔧 其它: 技术学习/其它/
+    - 🤖 人工智能: 技术学习/人工智能/index.md
+    - 💻 前后端: 技术学习/前后端/index.md
+    - 🧮 算法: 技术学习/算法/index.md
+    - 🔧 其它: 技术学习/其它/index.md
   - 📚 文学作品:
     - 文学作品/index.md
-    - 📖 小说: 文学作品/小说/
-    - ✍️ 散文、闲谈: 文学作品/散文、闲谈/
-    - 🎭 诗词古文: 文学作品/诗词古文/
+    - 📖 小说: 文学作品/小说/index.md
+    - ✍️ 散文、闲谈: 文学作品/散文、闲谈/index.md
+    - 🎭 诗词古文: 文学作品/诗词古文/index.md
   - 📝 日周记总结:
     - 日周记总结/index.md
   - 🏷️ 标签: tags.md
@@ -117,8 +117,7 @@ plugins:
   - statistics:                      # 在页面上显示统计信息，如字数、预计阅读时长
       words_per_minute: 200          # 设置平均每分钟阅读字数，用于计算阅读时长
       page_check_metadata: title     # 检查页面元数据
-  - tags:                            # 启用标签功能
-      tags_file: tags.md             # 标签页面文件
+  - tags                             # 启用标签功能
 
 # Python Markdown 扩展配置
 markdown_extensions:
