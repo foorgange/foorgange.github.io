@@ -100,6 +100,50 @@
 }
 
 .bg-image-21::before {
+  background-image: url('../images/backgrounds/girl_hat_flowers_1056451_3840x2400.jpg');
+}
+
+.bg-image-22::before {
+  background-image: url('../images/backgrounds/girl_hood_cloak_1075363_3840x2400.jpg');
+}
+
+.bg-image-23::before {
+  background-image: url('../images/backgrounds/girl_kimono_flowers_1056452_3840x2400.jpg');
+}
+
+.bg-image-24::before {
+  background-image: url('../images/backgrounds/girl_leaves_autumn_1056453_3840x2400.jpg');
+}
+
+.bg-image-25::before {
+  background-image: url('../images/backgrounds/girl_magic_forest_1056454_3840x2400.jpg');
+}
+
+.bg-image-26::before {
+  background-image: url('../images/backgrounds/girl_moon_night_1056455_3840x2400.jpg');
+}
+
+.bg-image-27::before {
+  background-image: url('../images/backgrounds/girl_ocean_waves_1056456_3840x2400.jpg');
+}
+
+.bg-image-28::before {
+  background-image: url('../images/backgrounds/girl_rain_umbrella_1056457_3840x2400.jpg');
+}
+
+.bg-image-29::before {
+  background-image: url('../images/backgrounds/girl_snow_winter_1056458_3840x2400.jpg');
+}
+
+.bg-image-30::before {
+  background-image: url('../images/backgrounds/girl_stars_galaxy_1056459_3840x2400.jpg');
+}
+
+.bg-image-31::before {
+  background-image: url('../images/backgrounds/girl_sunset_field_1056460_3840x2400.jpg');
+}
+
+.bg-image-21::before {
   background-image: url('../images/backgrounds/girl_hair_sky_986021_3840x2400.jpg');
 }
 
@@ -194,87 +238,12 @@
   z-index: 2;
 }
 
-/* 背景切换指示器 */
-.background-indicators {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.5rem;
-  z-index: 3;
-}
-
-.bg-indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.bg-indicator.active {
-  background: rgba(255, 255, 255, 0.9);
-  transform: scale(1.2);
-}
-
-.bg-indicator:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: scale(1.1);
-}
-
-/* 背景切换按钮 */
-.background-controls {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-}
-
-.bg-control-prev {
-  left: 2rem;
-}
-
-.bg-control-next {
-  right: 2rem;
-}
-
-.bg-control {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(10px);
-}
-
-.bg-control:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: scale(1.1);
-}
+/* 移除手动控制相关样式 */
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .background-controls {
-    display: none;
-  }
-  
-  .background-indicators {
-    bottom: 1rem;
-  }
-  
-  .bg-indicator {
-    width: 10px;
-    height: 10px;
+  .hero-section {
+    min-height: 100vh;
   }
 }
 

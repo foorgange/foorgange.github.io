@@ -15,7 +15,7 @@
   <!-- 自定义字体 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- 自定义图标 -->
   <link rel="icon" type="image/svg+xml" href="{{ 'assets/images/favicon.svg' | url }}">
@@ -23,6 +23,40 @@
   <!-- 预加载关键资源 -->
   <link rel="preload" href="{{ 'assets/stylesheets/extra.css' | url }}" as="style">
   <link rel="preload" href="{{ 'assets/stylesheets/background.css' | url }}" as="style">
+  
+  <!-- 自定义导航栏样式 -->
+  <style>
+    .md-header {
+      background-color: #1a1a1a !important;
+    }
+    .md-tabs {
+      background-color: #1a1a1a !important;
+    }
+    .md-tabs__item {
+      margin: 0 1rem;
+    }
+    .md-tabs__link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+    .nav-icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    /* 简化统计信息显示 */
+    .md-source-file__fact {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .md-source-file__fact .md-icon {
+      width: 14px;
+      height: 14px;
+    }
+  </style>
 {% endblock %}
 
 {% block scripts %}

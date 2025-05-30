@@ -29,11 +29,11 @@ code {
 /* ===== 主页特色区域样式 ===== */
 .features-section {
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
 }
 
 [data-md-color-scheme="slate"] .features-section {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
 }
 
 .section-title {
@@ -56,18 +56,18 @@ code {
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   padding: 2rem;
   border-radius: 20px;
   text-align: center;
   box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 [data-md-color-scheme="slate"] .feature-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 

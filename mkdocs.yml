@@ -5,7 +5,7 @@ site_author: snowfoootball/李年
 site_description: "探索技术的边界，记录生活的美好 - 李年的个人博客网站"
 site_url: https://snowfoootball.github.io/my-snowfoootball/
 repo_url: https://github.com/snowfoootball/my-snowfoootball
-repo_name: snowfoootball/my-snowfoootball
+repo_name: my-snowfoootball
 edit_uri: edit/main/docs/
 
 # copyright
@@ -17,7 +17,7 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: white
+      primary: black
       accent: indigo
       toggle:
         icon: material/weather-sunny
@@ -49,7 +49,7 @@ theme:
     - search.suggest
     - toc.follow
   font:
-    text: 'Noto Sans SC'
+    text: 'Fira Code'
     code: 'JetBrains Mono'
   favicon: assets/images/favicon.svg
   icon:
@@ -64,7 +64,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - 主页: home.md
+  - 首页: index.md
   - 技术学习:
       - 技术学习/index.md
       - 人工智能: 技术学习/人工智能/index.md
@@ -78,7 +78,6 @@ nav:
       - 诗词古文: 文学作品/诗词古文/index.md
   - 日周记总结:
       - 日周记总结/index.md
-  - 标签: tags.md
 
 plugins:
   - search
@@ -101,7 +100,7 @@ plugins:
   - statistics:
       words_per_minute: 200
       page_check_metadata: title
-  - tags
+
 
 markdown_extensions:
   - abbr

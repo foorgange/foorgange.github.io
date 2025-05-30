@@ -6,7 +6,7 @@
 class BackgroundSlider {
   constructor() {
     this.currentIndex = 0;
-    this.totalImages = 32; // 背景图片总数
+    this.totalImages = 31; // 背景图片总数
     this.autoSlideInterval = 8000; // 8秒自动切换
     this.isAutoSliding = true;
     this.intervalId = null;
@@ -69,45 +69,15 @@ class BackgroundSlider {
   }
   
   createControls() {
-    // 创建左右控制按钮
-    const prevButton = document.createElement('div');
-    prevButton.className = 'bg-control bg-control-prev background-controls';
-    prevButton.innerHTML = '‹';
-    prevButton.addEventListener('click', () => this.previousImage());
-    
-    const nextButton = document.createElement('div');
-    nextButton.className = 'bg-control bg-control-next background-controls';
-    nextButton.innerHTML = '›';
-    nextButton.addEventListener('click', () => this.nextImage());
-    
-    this.heroSection.appendChild(prevButton);
-    this.heroSection.appendChild(nextButton);
+    // 移除手动控制按钮
   }
   
   createIndicators() {
-    // 创建指示器容器
-    const indicatorsContainer = document.createElement('div');
-    indicatorsContainer.className = 'background-indicators';
-    
-    // 创建指示器点（基于当前页面的图片数量）
-    for (let i = 0; i < this.imageRange.count; i++) {
-      const indicator = document.createElement('div');
-      indicator.className = 'bg-indicator';
-      indicator.addEventListener('click', () => this.goToImage(i));
-      indicatorsContainer.appendChild(indicator);
-    }
-    
-    this.heroSection.appendChild(indicatorsContainer);
-    this.indicators = indicatorsContainer.querySelectorAll('.bg-indicator');
+    // 移除指示器
   }
   
   createStatusIndicator() {
-    // 创建状态指示器
-    const statusDiv = document.createElement('div');
-    statusDiv.className = 'background-status';
-    statusDiv.textContent = '背景加载中...';
-    this.heroSection.appendChild(statusDiv);
-    this.statusIndicator = statusDiv;
+    // 移除状态指示器
   }
   
   preloadImages() {
