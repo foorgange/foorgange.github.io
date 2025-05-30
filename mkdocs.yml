@@ -1,177 +1,240 @@
-# MkDocs 配置文件
+# 网站主要配置
+site_name: Snowfoootball's Site         # 网站标题，显示在浏览器标签页和导航栏
+site_author: LiNian              # 网站作者，用于元数据
+site_url: https://foorgange.github.io/ # 网站的 canonical URL，用于 SEO 和社交分享
+site_description: 李年的个人网站 # 网站描述，用于搜索引擎元数据
 
-site_name: "Snowfoootball's Digital Garden"
-site_author: snowfoootball/李年
-site_description: "探索技术的边界，记录生活的美好 - 李年的个人博客网站"
-site_url: https://snowfoootball.github.io/my-snowfoootball/
-repo_url: https://github.com/snowfoootball/my-snowfoootball
-repo_name: my-snowfoootball
-edit_uri: edit/main/docs/
+# 代码仓库信息 (可选，用于在网站上显示仓库链接)
+repo_url: https://github.com/foorgange/foorgange.github.io.git # 仓库的 URL
+repo_name: Snowfoootball's Site          # 在网站上显示的仓库名称
 
-# copyright
-copyright: Copyright &copy; 2025 李年
+# 版权信息，显示在页脚
+copyright: Copyright &copy; 2025 LiNian
 
+# 主题配置
 theme:
-  name: material
-  language: zh
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: white
-      accent: indigo
-      toggle:
-        icon: material/weather-sunny
-        name: light mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: black
-      accent: indigo
-      toggle:
-        icon: material/weather-night
-        name: dark mode
+  name: material                 # 使用 Material for MkDocs 主题
+  language: zh                   # 网站语言设置为中文 (影响主题内置文本，如 "上一页"、"下一页")
+  custom_dir: overrides          # 自定义主题文件目录，MkDocs将在此目录下查找覆盖默认主题的文件
+                                 # 例如 overrides/main.html 会覆盖主题的 main.html
+                                 # overrides/css/extra.css (如果在 extra_css 中配置为 css/extra.css) 会被加载
+
+  # 主题功能特性开关 (features)
+  # 更多特性请查阅 Material for MkDocs 官方文档
   features:
-    - content.code.annotate
-    - content.code.copy
-    - content.code.select
-    - content.footnote.tooltips
-    - content.tabs.link
-    - header.autohide
-    - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.top
-    - navigation.path
-    - navigation.indexes
-    - navigation.sections
-    - navigation.expand
-    - search.highlight
-    - search.share
-    - search.suggest
-    - toc.follow
+    - content.code.annotate      # 启用代码块注释功能 (在代码块上方添加可点击的注释标记)
+    - content.code.copy          # 启用代码块一键复制按钮
+    - content.code.select        # 启用代码块一键全选按钮 (通常与复制按钮一起出现)
+    - content.footnote.tooltips  # 启用脚注的悬浮提示效果
+    - content.tabs.link          # 启用内容选项卡之间的链接锚点
+    - header.autohide            # 向下滚动页面时自动隐藏顶部导航栏，向上滚动时显示
+    - navigation.tracking        # 在导航栏中高亮显示当前页面的路径
+    - navigation.tabs            # 使用顶部标签页作为一级导航 (如果导航层级较深)
+    - navigation.top             # 显示 "返回顶部" 按钮
+    - navigation.path            # 在页面顶部显示面包屑导航路径
+    - navigation.indexes         # 为包含子页面的目录页自动生成索引列表
+    - search.highlight           # 在搜索结果中高亮显示匹配的关键词
+    - search.share               # 允许分享搜索结果链接
+    - search.suggest             # 在搜索框输入时提供搜索建议
+    - toc.follow                 # 页面滚动时，右侧目录 (TOC) 自动跟随高亮当前章节
+
+  # 调色板配置 (日间/夜间模式)
+  palette:
+    # 日间模式配置
+    - media: "(prefers-color-scheme: light)" # 当用户系统偏好为亮色主题时应用
+      scheme: default                        # 使用主题的默认 (亮色) 配色方案
+      primary: white                         # 主色调 (如顶部导航栏背景) 设置为白色
+      accent: indigo                         # 强调色 (如链接、按钮) 设置为靛蓝色
+      toggle:                                # 切换日夜模式按钮的配置
+        icon: material/weather-sunny       # 日间模式切换按钮图标
+        name: light mode                   # 鼠标悬浮在按钮上时显示的名称
+        
+    # 夜间模式配置
+    - media: "(prefers-color-scheme: dark)"  # 当用户系统偏好为暗色主题时应用
+      scheme: slate                          # 使用主题的 slate (暗色) 配色方案
+      primary: black                         # 主色调设置为黑色
+      accent: indigo                         # 强调色保持为靛蓝色
+      toggle:
+        icon: material/weather-night        # 夜间模式切换按钮图标
+        name: dark mode                    # 鼠标悬浮提示
+
+  # 字体配置
   font:
-    text: 'Noto Sans SC'
-    code: 'JetBrains Mono'
-  favicon: assets/images/favicon.svg
+    text: JetBrains Mono               # 主要文本字体设置为 JetBrains Mono (通常在 custom.css 中会被覆盖)
+
+  # 网站图标配置
+  favicon: img/favoricon.png                             # 指向网站 favicon.ico 或 .png 文件的路径 (相对于 docs 目录)
+                                       # 例如: img/favicon.png
+
+  # 主题内置图标配置
   icon:
-    logo: material/snowflake
-    repo: fontawesome/brands/github
-    edit: material/pencil
-  custom_dir: overrides
+    logo: material/jellyfish         # 导航栏左上角显示的 Logo 图标
+    repo: fontawesome/brands/git-alt   # 代码仓库链接旁边显示的图标
+    edit: material/pencil              # "编辑此页" 按钮图标 (如果启用)
 
-extra_javascript:
-  - assets/javascripts/background-slider.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    # 自定义静态模板
+    static_templates:
+    - 404.html                         # 指定自定义 404 错误页面的 HTML 文件名 (应放置在 custom_dir 或主题的默认位置)
 
-nav:
-  - 主页: home.md
-  - 技术学习:
-      - 技术学习/index.md
-      - 人工智能: 技术学习/人工智能/index.md
-      - 前后端: 技术学习/前后端/index.md
-      - 算法: 技术学习/算法/index.md
-      - 其它: 技术学习/其它/index.md
-  - 文学作品:
-      - 文学作品/index.md
-      - 小说: 文学作品/小说/index.md
-      - 散文、闲谈: 文学作品/散文、闲谈/index.md
-      - 诗词古文: 文学作品/诗词古文/index.md
-  - 日周记总结:
-      - 日周记总结/index.md
-  - 标签: tags.md
-
+# MkDocs 插件配置
 plugins:
-  - search
-  - callouts
-  - glightbox:
-      width: 80%
-  - git-revision-date-localized:
-      type: datetime
-      timezone: Asia/Shanghai
-      enable_creation_date: true
-      enable_git_follow: false
-      exclude:
+  - callouts                         # 启用 callouts 插件 (类似于 admonition，但可能有不同样式或功能)
+                                     # 需要安装 `pip install mkdocs-callouts`
+  - glightbox:                       # 启用 glightbox 图片灯箱插件，点击图片可放大显示
+                                     # 需要安装 `pip install mkdocs-glightbox`
+      width: 80%                     # 灯箱宽度为视口的 80%
+  - git-revision-date-localized:     # 显示页面最后修改时间和创建时间 (基于 Git 提交历史)
+                                     # 需要安装 `pip install mkdocs-git-revision-date-localized-plugin`
+      type: datetime                 # 显示完整的日期和时间
+      timezone: Asia/Shanghai        # 设置时区为上海
+      enable_creation_date: true     # 同时显示页面创建日期
+      exclude:                       # 排除以下页面的日期显示
         - index.md
-        - home.md
-        - 技术学习/index.md
-        - 文学作品/index.md
-        - 日周记总结/index.md
-  - minify:
-      minify_html: true
-  - statistics:
-      words_per_minute: 200
-      page_check_metadata: title
-  - tags
+        - backend/index.md
+        - notes/index.md
+        - summaries/index.md
+        - links/index.md
+        - blogs/index.md
+        
+  - minify:                          # 压缩 HTML 文件以减小体积
+                                     # 需要安装 `pip install mkdocs-minify-plugin`
+      minify_html: true              # 启用 HTML 压缩
+  - search                           # 启用 MkDocs 内置的客户端搜索功能 (若使用 material 主题，通常已包含更强搜索)
+  - statistics:                      # 在页面上显示统计信息，如字数、预计阅读时长
+                                     # 需要安装 `pip install mkdocs-statistics`
+      words_per_minute: 200          # 设置平均每分钟阅读字数，用于计算阅读时长
 
+# Python Markdown 扩展配置
 markdown_extensions:
-  - abbr
-  - admonition
-  - attr_list
-  - footnotes
-  - meta
-  - md_in_html
-  - nl2br
-
-  - pymdownx.arithmatex:
-      generic: true
-
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-
-  # - pymdownx.emoji:
-  #     emoji_index: pymdownx.emoji.twemoji
-  #     emoji_generator: pymdownx.emoji.to_svg
-  #     options:
-  #       custom_icons:
-  #         - overrides/.icons
-
-  - pymdownx.highlight:
-      anchor_linenums: true
-      auto_title: true
-      linenums: true
-      linenums_style: pymdownx-inline
-      line_spans: __span
-      pygments_lang_class: true
-
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.magiclink
-  - pymdownx.saneheaders
-  - pymdownx.snippets
-  - pymdownx.smartsymbols
-  - pymdownx.superfences:
+  - abbr                             # 启用缩写定义 (例如: HTML)
+  - admonition                       # 启用提示块 (如 Note, Warning, Tip 等)
+  - attr_list                        # 允许为 Markdown 元素添加 HTML 属性 (例如: {#id .class})
+  - footnotes                        # 启用脚注功能 (例如: [^1])
+  - meta                             # 允许在 Markdown 文件顶部定义元数据 (YAML front matter)
+  - md_in_html                       # 允许在 HTML 块中嵌套 Markdown 内容
+  - nl2br                            # 将 Markdown 中的换行符转换成 HTML 的 <br> 标签 (自动换行)
+  
+  # 数学公式支持 (Pymdownx 扩展)
+  - pymdownx.arithmatex:             # 启用 MathJax 或 KaTeX 来渲染 LaTeX 数学公式
+      generic: true                  # 使用通用模式，通常与 MathJax 配合
+  
+  # Pymdownx 扩展集 (提供更多 Markdown 语法增强)
+  - pymdownx.caret                   # 启用上标 (例如: H^2O)
+  - pymdownx.critic                  # 启用文本批注标记 (例如: {++added++} {--removed--})
+  - pymdownx.details                 # 启用可折叠的详情块 (类似于 HTML <details>)
+  - pymdownx.emoji:                  # 启用 Emoji 表情符号 (例如: :smile:)
+      emoji_index: !!python/name:material.extensions.emoji.twemoji # 使用 Twemoji 作为 Emoji 索引
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg   # 将 Emoji 渲染为 SVG 图像
+      options:
+        custom_icons:                # 自定义 Emoji 图标目录
+          - overrides/.icons         # 指向 overrides/.icons 目录，可放置自定义 SVG 图标
+  
+  - pymdownx.highlight:              # 启用代码块语法高亮 (基于 Pygments)
+      anchor_linenums: true            # 为代码块的行号添加锚点链接
+      auto_title: true                 # 自动在代码块上方显示编程语言名称
+      linenums: true                   # 显示代码块行号
+      linenums_style: pymdownx-inline  # 行号样式 (内联)
+      line_spans: __span               # 用于行高亮的 span 元素的 ID 前缀
+      pygments_lang_class: true        # 为代码块添加语言特定的 CSS 类 (例如: .language-python)
+  
+  - pymdownx.inlinehilite            # 启用行内代码语法高亮
+  - pymdownx.keys                    # 启用键盘按键样式 (例如: ++ctrl+alt+delete++)
+  - pymdownx.mark                    # 启用文本高亮标记 (例如: ==highlighted==)
+  - pymdownx.magiclink               # 自动将 URL 和邮箱地址转换为链接
+  - pymdownx.saneheaders             # 使标题生成更规范的 ID
+  - pymdownx.snippets                # 允许从其他文件插入内容片段
+  - pymdownx.smartsymbols            # 将特定字符序列转换为智能符号 (例如: --- 变破折号，... 变省略号)
+  - pymdownx.superfences:            # 增强版代码块，允许嵌套和自定义围栏
       custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: pymdownx.superfences.fence_code_format
+        - name: mermaid                # 定义名为 mermaid 的自定义围址
+          class: mermaid               # 为其生成的 HTML 添加 mermaid 类 (用于 Mermaid.js 初始化)
+          format: !!python/name:pymdownx.superfences.fence_code_format # 指定处理函数
+  
+  - pymdownx.tasklist:               # 启用任务列表 (例如: - [x] Done, - [ ] Todo)
+      custom_checkbox: true          # 使用自定义复选框样式 (通常与主题或 custom.css 配合)
+  
+  - pymdownx.tabbed:                 # 启用内容选项卡 (Tabbed content)
+      alternate_style: true          # 使用备用样式
+      slugify: !!python/object/apply:pymdownx.slugs.slugify # 用于生成选项卡 ID 的 slugify 函数
+        kwds:
+          case: lower                 # 将 ID 转为小写
+  
+  - pymdownx.tilde                   # 启用删除线 (例如: ~~deleted~~)
+  - sane_lists                       # 使列表渲染更规范
+  - tables                           # 启用 Markdown 表格语法
+  - toc:                             # 目录生成 (Table of Contents)
+      permalink: true                  # 为标题添加永久链接锚点 (通常是一个 # 图标)
+      toc_depth: 4                   # 目录显示的标题层级深度 (例如, 1-4级标题 H1-H4)
 
-  - pymdownx.tasklist:
-      custom_checkbox: true
-
-  - pymdownx.tabbed:
-      alternate_style: true
-
-  - pymdownx.tilde
-  - sane_lists
-  - tables
-  - toc:
-      permalink: true
-      toc_depth: 4
-
+# 额外加载的 CSS 文件
+# 路径相对于 custom_dir (即 overrides 目录) 或 docs 目录 (如果 custom_dir 未定义或文件不在 custom_dir)
+# 当 custom_dir: overrides 设置时, css/custom.css 指向 overrides/css/custom.css
 extra_css:
-  - assets/stylesheets/extra.css
-  - assets/stylesheets/background.css
-  - assets/stylesheets/card.css
-  - assets/stylesheets/flink.css
-  - assets/stylesheets/tasklist.css
+  - css/custom.css                 # 自定义全局样式
+  - css/card.css                   # 卡片组件样式
+  - css/flink.css                  # 友链样式
+  - css/tasklist.css               # 自定义任务列表样式
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
 
+# 额外数据，可用于模板或插件
 extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/foorgange
-    - icon: fontawesome/solid/envelope
-      link: mailto:your-email@example.com
+  social:                            # 社交链接配置，通常在主题中用于显示社交图标链接
+    - icon: fontawesome/brands/qq   # 图标路径或 FontAwesome 类名 (需要主题支持)
+      link: \img\qq.png              # 链接地址 (此处是本地图片，可能用于显示QQ二维码)
+      name: contact with me!           # 鼠标悬浮提示或链接文字
+
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/382127786?spm_id_from=333.337.0.0           
+      name: subscribe to me!
+
+    - icon: csdn-logo
+      link: https://blog.csdn.net/2403_87432910         
+      name: visit my csdn blog!
+
+# 导航栏配置
+# 定义网站的页面结构和导航顺序
+nav:
+  - Home: index.md             
+  - 技术学习: 
+    - index: 技术学习/index.md
+    - 前后端: 
+      - "java高级：自定义注解，反射和动态代理": 技术学习/前后端/java高级：自定义注解，反射和动态代理.md
+      - "深入浅出理解 IOC（控制反转）与 DI（依赖注入）": 技术学习/前后端/深入浅出理解 IOC（控制反转）与 DI（依赖注入）.md
+    - 算法: 
+      - "multiset": 技术学习/算法/multiset.md
+      - "vector": 技术学习/算法/vector.md
+      - "牛客周赛 Round 93题解（个人向A-E）": 技术学习/算法/牛客周赛 Round 93题解（个人向A-E）.md
+    - 人工智能: 技术学习/人工智能/index.md
+    - 其它: 技术学习/其它/index.md
+  - 文学作品: 
+    - index: 文学作品/index.md
+    - 小说: 文学作品/小说/index.md
+    - 散文、闲谈: 文学作品/散文、闲谈/index.md
+    - 诗词古文: 文学作品/诗词古文/index.md
+  - 日周记总结: 日周记总结/index.md
+  - Backend: 
+    - index: backend/index.md
+    - JavaSE: 
+      - "1 基本语法": backend/javase/1-基本语法.md
+      - "2 方法": backend/javase/2-方法.md
+      - "3 面向对象1": backend/javase/3-面向对象1.md
+      - "4 面向对象2": backend/javase/4-面向对象2.md
+      - "5 核心类1": backend/javase/5-核心类1.md
+      - "6 核心类2": backend/javase/6-核心类2.md
+  - Notes: notes/index.md
+  - Summaries: summaries/index.md
+  - Links: links/index.md
+  - About: about/index.md
+  - Blogs: blogs/index.md
+
+# 额外加载的 JavaScript 文件
+# 路径规则同 extra_css
+extra_javascript:
+  - js/mathjax.js                  # 自定义 MathJax 配置文件 (通常在 overrides/js/mathjax.js)
+  - js/extra.js                    # Sakura falling effect
+  - https://cn.vercount.one/js     # 外部 JS (可能是网站统计脚本)
+  - https://cn.vercount.one/js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js # Corrected .jss to .js
