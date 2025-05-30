@@ -1,13 +1,16 @@
 # MkDocs 配置文件
 
 # 网站基本信息
-site_name: Snowfoootball's Site         # 网站标题，显示在浏览器标签页和导航栏
-site_author: snowfoootball/李年             # 网站作者，用于元数据
-site_description: 李年的个人网站 # 网站描述，用于搜索引擎元数据
+site_name: "🌟 Snowfoootball's Digital Garden"  # 网站标题，显示在浏览器标签页和导航栏
+site_author: snowfoootball/李年                    # 网站作者，用于元数据
+site_description: "探索技术的边界，记录生活的美好 - 李年的个人博客网站" # 网站描述，用于搜索引擎元数据
 site_url: https://snowfoootball.github.io/my-snowfoootball/
 repo_url: https://github.com/snowfoootball/my-snowfoootball
 repo_name: snowfoootball/my-snowfoootball
 edit_uri: edit/main/docs/
+
+# 严格模式，确保链接正确性
+strict: true
 
 # 版权信息，显示在页脚
 copyright: Copyright &copy; 2025 李年
@@ -57,8 +60,8 @@ theme:
     - toc.follow                 # 目录跟随滚动
   # 字体配置
   font:
-    text: Fira Sans                        # 主要文本字体设置为 Fira Sans
-    code: 'Source Code Pro'               # 代码字体设置为 Source Code Pro
+    text: 'Noto Sans SC'                   # 主要文本字体，更好的中文支持
+    code: 'JetBrains Mono'                 # 代码字体，更现代的等宽字体
   
   # 网站图标配置
   favicon: assets/images/favicon.svg     # 指向网站 favicon 文件的路径
@@ -73,22 +76,25 @@ theme:
 
 extra_javascript:
   - assets/javascripts/background-slider.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - 主页: home.md
-  - 技术学习:
+  - 🏠 主页: home.md
+  - 🚀 技术学习:
     - 技术学习/index.md
-    - 人工智能: 技术学习/人工智能/
-    - 前后端: 技术学习/前后端/
-    - 算法: 技术学习/算法/
-    - 其它: 技术学习/其它/
-  - 文学作品:
+    - 🤖 人工智能: 技术学习/人工智能/
+    - 💻 前后端: 技术学习/前后端/
+    - 🧮 算法: 技术学习/算法/
+    - 🔧 其它: 技术学习/其它/
+  - 📚 文学作品:
     - 文学作品/index.md
-    - 小说: 文学作品/小说/
-    - 散文、闲谈: 文学作品/散文、闲谈/
-    - 诗词古文: 文学作品/诗词古文/
-  - 日周记总结:
+    - 📖 小说: 文学作品/小说/
+    - ✍️ 散文、闲谈: 文学作品/散文、闲谈/
+    - 🎭 诗词古文: 文学作品/诗词古文/
+  - 📝 日周记总结:
     - 日周记总结/index.md
+  - 🏷️ 标签: tags.md
 
 # MkDocs 插件配置
 plugins:
@@ -109,7 +115,10 @@ plugins:
   - minify:                          # 压缩 HTML 文件以减小体积
       minify_html: true              # 启用 HTML 压缩
   - statistics:                      # 在页面上显示统计信息，如字数、预计阅读时长
-       words_per_minute: 200          # 设置平均每分钟阅读字数，用于计算阅读时长
+      words_per_minute: 200          # 设置平均每分钟阅读字数，用于计算阅读时长
+      page_check_metadata: title     # 检查页面元数据
+  - tags:                            # 启用标签功能
+      tags_file: tags.md             # 标签页面文件
 
 # Python Markdown 扩展配置
 markdown_extensions:

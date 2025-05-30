@@ -1,0 +1,28 @@
+# MkDocs 核心
+mkdocs>=1.5.0
+
+# Material 主题
+mkdocs-material>=9.0.0
+
+# MkDocs 插件
+mkdocs-callouts>=1.9.0
+mkdocs-glightbox>=0.3.4
+mkdocs-git-revision-date-localized-plugin>=1.2.0
+mkdocs-minify-plugin>=0.7.0
+mkdocs-statistics-plugin
+
+# Markdown 扩展
+pymdown-extensions>=10.0.0
+
+# 其他依赖
+Pillow>=9.0.0
+cairosvg>=2.5.0
+
+# 数学公式支持
+mathjax>=3.0.0
+
+# 字体和图标支持
+fontawesome>=5.0.0
+
+# 图表支持 (Mermaid)
+mermaid>=8.0.0

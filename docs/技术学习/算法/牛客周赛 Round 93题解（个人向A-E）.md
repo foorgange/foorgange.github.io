@@ -1,4 +1,14 @@
-# 牛客周赛 Round 93题解（个人向A-E）
+---
+title: 牛客周赛 Round 93题解（个人向A-E）
+date: 2025-01-01
+tags:
+  - 算法
+  - 竞赛编程
+  - 牛客
+  - 题解
+  - C++
+description: 详细解析牛客周赛 Round 93 的 A-E 题，包含解题思路和完整代码实现
+---
 
 题目链接：<https://ac.nowcoder.com/acm/contest/109904>
 

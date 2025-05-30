@@ -75,10 +75,46 @@ hide:
         <h3><a href="技术学习/算法/牛客周赛 Round 93题解（个人向A-E）/">牛客周赛 Round 93题解</a></h3>
         <p>详细解析竞赛题目，分享解题思路和代码实现。</p>
         <div class="recent-meta">
-          <span class="recent-date">最近更新</span>
+          <span class="recent-date">2025-01-01</span>
+          <span class="recent-tags">算法 · 竞赛编程</span>
         </div>
       </div>
-      <!-- 更多最近文章将在这里显示 -->
+      <div class="recent-card">
+        <div class="recent-category">后端</div>
+        <h3><a href="技术学习/前后端/java高级：自定义注解，反射和动态代理/">Java高级：注解与反射</a></h3>
+        <p>深入理解Java高级特性，掌握Spring框架的底层实现机制。</p>
+        <div class="recent-meta">
+          <span class="recent-date">2025-01-01</span>
+          <span class="recent-tags">Java · 框架原理</span>
+        </div>
+      </div>
+      <div class="recent-card">
+        <div class="recent-category">散文</div>
+        <h3><a href="文学作品/散文、闲谈/代码与诗的对话/">代码与诗的对话</a></h3>
+        <p>在代码的世界里寻找诗意，在诗的韵律中感受技术之美。</p>
+        <div class="recent-meta">
+          <span class="recent-date">2025-01-01</span>
+          <span class="recent-tags">散文 · 技术感悟</span>
+        </div>
+      </div>
+      <div class="recent-card">
+        <div class="recent-category">诗词</div>
+        <h3><a href="文学作品/诗词古文/程序员的四季/">程序员的四季</a></h3>
+        <p>用诗歌描绘程序员一年四季的工作与生活，技术与人文的完美结合。</p>
+        <div class="recent-meta">
+          <span class="recent-date">2025-01-01</span>
+          <span class="recent-tags">诗词 · 原创</span>
+        </div>
+      </div>
+      <div class="recent-card">
+        <div class="recent-category">总结</div>
+        <h3><a href="日周记总结/2025年第1周总结/">2025年第1周总结</a></h3>
+        <p>新年新开始，记录第一周的学习、工作和生活感悟。</p>
+        <div class="recent-meta">
+          <span class="recent-date">2025-01-07</span>
+          <span class="recent-tags">周总结 · 个人成长</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
