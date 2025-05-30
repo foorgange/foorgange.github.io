@@ -1,4 +1,4 @@
 site_name: My Site
-site_url: https://yourdomain.com/yourpath  # 如果只是本地预览可以暂时忽略
+site_url: https://foorgange.github.io
 theme:
   name: material
