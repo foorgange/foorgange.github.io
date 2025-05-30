@@ -1,20 +1,190 @@
-site_name: snowfoootball
-site_url: https://foorgange.github.io/
+# MkDocs 配置文件
 
+# 网站基本信息
+site_name: Snowfoootball's Site         # 网站标题，显示在浏览器标签页和导航栏
+site_author: snowfoootball/李年             # 网站作者，用于元数据
+site_description: 李年的个人网站 # 网站描述，用于搜索引擎元数据
+site_url: https://snowfoootball.github.io/my-snowfoootball/
+repo_url: https://github.com/snowfoootball/my-snowfoootball
+repo_name: snowfoootball/my-snowfoootball
+edit_uri: edit/main/docs/
+
+# 版权信息，显示在页脚
+copyright: Copyright &copy; 2025 李年
+
+# 主题配置
 theme:
-  name: material
+  name: material                 # 使用 Material for MkDocs 主题
+  language: zh                   # 设置语言为中文
+  
+  # 调色板配置 (日间/夜间模式)
+  palette:
+    # 日间模式配置
+    - media: "(prefers-color-scheme: light)" # 当用户系统偏好为亮色主题时应用
+      scheme: default                        # 使用主题的默认 (亮色) 配色方案
+      primary: white                         # 主色调 (如顶部导航栏背景) 设置为白色
+      accent: indigo                         # 强调色 (如链接、按钮) 设置为靛蓝色
+      toggle:                                # 切换日夜模式按钮的配置
+        icon: material/weather-sunny         # 日间模式切换按钮图标
+        name: light mode                     # 鼠标悬浮在按钮上时显示的名称
+    
+    # 夜间模式配置
+    - media: "(prefers-color-scheme: dark)"  # 当用户系统偏好为暗色主题时应用
+      scheme: slate                          # 使用主题的 slate (暗色) 配色方案
+      primary: black                         # 主色调设置为黑色
+      accent: indigo                         # 强调色保持为靛蓝色
+      toggle:
+        icon: material/weather-night         # 夜间模式切换按钮图标
+        name: dark mode                      # 鼠标悬浮提示
+  features:
+    - content.code.annotate      # 启用代码块注释功能
+    - content.code.copy          # 启用代码块一键复制按钮
+    - content.code.select        # 启用代码块一键全选按钮
+    - content.footnote.tooltips  # 启用脚注的悬浮提示效果
+    - content.tabs.link          # 启用内容选项卡之间的链接锚点
+    - header.autohide            # 向下滚动页面时自动隐藏顶部导航栏
+    - navigation.tracking        # 在导航栏中高亮显示当前页面的路径
+    - navigation.tabs            # 使用顶部标签页作为一级导航
+    - navigation.tabs.sticky     # 标签页粘性显示
+    - navigation.top             # 显示返回顶部按钮
+    - navigation.path            # 在页面顶部显示面包屑导航路径
+    - navigation.indexes         # 为包含子页面的目录页自动生成索引列表
+    - navigation.sections        # 启用导航分组
+    - navigation.expand          # 展开导航
+    - search.highlight           # 在搜索结果中高亮显示匹配的关键词
+    - search.share               # 允许分享搜索结果链接
+    - search.suggest             # 在搜索框输入时提供搜索建议
+    - toc.follow                 # 目录跟随滚动
+  # 字体配置
+  font:
+    text: Fira Sans                        # 主要文本字体设置为 Fira Sans
+    code: 'Source Code Pro'               # 代码字体设置为 Source Code Pro
+  
+  # 网站图标配置
+  favicon: assets/images/favicon.svg     # 指向网站 favicon 文件的路径
+  
+  # 主题内置图标配置
+  icon:
+    logo: material/snowflake             # 导航栏左上角显示的 Logo 图标
+    repo: fontawesome/brands/github     # 代码仓库链接旁边显示的图标
+    edit: material/pencil                # "编辑此页" 按钮图标
+  
+  custom_dir: overrides
 
+extra_javascript:
+  - assets/javascripts/background-slider.js
+
+nav:
+  - 主页: home.md
+  - 技术学习:
+    - 技术学习/index.md
+    - 人工智能: 技术学习/人工智能/
+    - 前后端: 技术学习/前后端/
+    - 算法: 技术学习/算法/
+    - 其它: 技术学习/其它/
+  - 文学作品:
+    - 文学作品/index.md
+    - 小说: 文学作品/小说/
+    - 散文、闲谈: 文学作品/散文、闲谈/
+    - 诗词古文: 文学作品/诗词古文/
+  - 日周记总结:
+    - 日周记总结/index.md
+
+# MkDocs 插件配置
 plugins:
-  - search
-  - blogging
-  - callouts
-  - minify:
-      minify_html: true
-  - git-revision-date-localized
-  - glightbox
-  - statistics
-  - awesome-pages
-  - literate-nav
-  - mermaid2
-  - table-reader
-  - encryptcontent
+  - search                           # 启用 MkDocs 内置的客户端搜索功能
+  - callouts                         # 启用 callouts 插件 (类似于 admonition，但可能有不同样式或功能)
+  - glightbox:                       # 启用 glightbox 图片灯箱插件，点击图片可放大显示
+      width: 80%                     # 灯箱宽度为视口的 80%
+  - git-revision-date-localized:     # 显示页面最后修改时间和创建时间 (基于 Git 提交历史)
+      type: datetime                 # 显示完整的日期和时间
+      timezone: Asia/Shanghai        # 设置时区为上海
+      enable_creation_date: true     # 同时显示页面创建日期
+      exclude:                       # 排除以下页面的日期显示
+        - index.md
+        - home.md
+        - 技术学习/index.md
+        - 文学作品/index.md
+        - 日周记总结/index.md
+  - minify:                          # 压缩 HTML 文件以减小体积
+      minify_html: true              # 启用 HTML 压缩
+  - statistics:                      # 在页面上显示统计信息，如字数、预计阅读时长
+       words_per_minute: 200          # 设置平均每分钟阅读字数，用于计算阅读时长
+
+# Python Markdown 扩展配置
+markdown_extensions:
+  - abbr                             # 启用缩写定义 (例如: HTML)
+  - admonition                       # 启用提示块 (如 Note, Warning, Tip 等)
+  - attr_list                        # 允许为 Markdown 元素添加 HTML 属性 (例如: {#id .class})
+  - footnotes                        # 启用脚注功能 (例如: [^1])
+  - meta                             # 允许在 Markdown 文件顶部定义元数据 (YAML front matter)
+  - md_in_html                       # 允许在 HTML 块中嵌套 Markdown 内容
+  - nl2br                            # 将 Markdown 中的换行符转换成 HTML 的 <br> 标签 (自动换行)
+  
+  # 数学公式支持 (Pymdownx 扩展)
+  - pymdownx.arithmatex:             # 启用 MathJax 或 KaTeX 来渲染 LaTeX 数学公式
+      generic: true                  # 使用通用模式，通常与 MathJax 配合
+  
+  # Pymdownx 扩展集 (提供更多 Markdown 语法增强)
+  - pymdownx.caret                   # 启用上标 (例如: H^2O)
+  - pymdownx.critic                  # 启用文本批注标记 (例如: {++added++} {--removed--})
+  - pymdownx.details                 # 启用可折叠的详情块 (类似于 HTML <details>)
+  - pymdownx.emoji:                  # 启用 Emoji 表情符号 (例如: :smile:)
+      emoji_index: !!python/name:pymdownx.emoji.twemoji # 使用 Twemoji 作为 Emoji 索引
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg   # 将 Emoji 渲染为 SVG 图像
+      options:
+        custom_icons:                # 自定义 Emoji 图标目录
+          - overrides/.icons         # 指向 overrides/.icons 目录，可放置自定义 SVG 图标
+  
+  - pymdownx.highlight:              # 启用代码块语法高亮 (基于 Pygments)
+      anchor_linenums: true            # 为代码块的行号添加锚点链接
+      auto_title: true                 # 自动在代码块上方显示编程语言名称
+      linenums: true                   # 显示代码块行号
+      linenums_style: pymdownx-inline  # 行号样式 (内联)
+      line_spans: __span               # 用于行高亮的 span 元素的 ID 前缀
+      pygments_lang_class: true        # 为代码块添加语言特定的 CSS 类 (例如: .language-python)
+  
+  - pymdownx.inlinehilite            # 启用行内代码语法高亮
+  - pymdownx.keys                    # 启用键盘按键样式 (例如: ++ctrl+alt+delete++)
+  - pymdownx.mark                    # 启用文本高亮标记 (例如: ==highlighted==)
+  - pymdownx.magiclink               # 自动将 URL 和邮箱地址转换为链接
+  - pymdownx.saneheaders             # 使标题生成更规范的 ID
+  - pymdownx.snippets                # 允许从其他文件插入内容片段
+  - pymdownx.smartsymbols            # 将特定字符序列转换为智能符号 (例如: --- 变破折号，... 变省略号)
+  - pymdownx.superfences:            # 增强版代码块，允许嵌套和自定义围栏
+      custom_fences:
+        - name: mermaid                # 定义名为 mermaid 的自定义围栏
+          class: mermaid               # 为其生成的 HTML 添加 mermaid 类 (用于 Mermaid.js 初始化)
+          format: !!python/name:pymdownx.superfences.fence_code_format # 指定处理函数
+  
+  - pymdownx.tasklist:               # 启用任务列表 (例如: - [x] Done, - [ ] Todo)
+      custom_checkbox: true          # 使用自定义复选框样式 (通常与主题或 custom.css 配合)
+  
+  - pymdownx.tabbed:                 # 启用内容选项卡 (Tabbed content)
+      alternate_style: true          # 使用备用样式
+      slugify: !!python/object/apply:pymdownx.slugs.slugify # 用于生成选项卡 ID 的 slugify 函数
+        kwds:
+          case: lower                 # 将 ID 转为小写
+  
+  - pymdownx.tilde                   # 启用删除线和下标 (例如: ~~deleted~~ H~2~O)
+  - sane_lists                       # 启用更合理的列表处理
+  - tables                           # 启用表格支持
+  - toc:                             # 目录配置
+      permalink: true                # 为标题添加永久链接
+      toc_depth: 4                   # 目录深度设置为4级
+
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/background.css
+  - assets/stylesheets/card.css
+  - assets/stylesheets/flink.css
+  - assets/stylesheets/tasklist.css
+  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/foorgange
+    - icon: fontawesome/solid/envelope
+      link: mailto:your-email@example.com
