@@ -18,9 +18,6 @@ pymdown-extensions>=10.0.0
 Pillow>=9.0.0
 cairosvg>=2.5.0
 
-# 数学公式支持
-mathjax>=3.0.0
-
 # 字体和图标支持
 fontawesome>=5.0.0
 
