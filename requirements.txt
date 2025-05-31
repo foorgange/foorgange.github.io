@@ -18,4 +18,4 @@ Pillow>=9.0.0
 cairosvg>=2.5.0
 
 
-mkdocs-statistics-plugin>=0.2.0
+mkdocs-statistics-plugin
