@@ -1,27 +1,18 @@
-# MkDocs 核心
+# MkDocs 鏍稿績
 mkdocs>=1.5.0
 
-# Material 主题
+# Material 涓婚
 mkdocs-material>=9.0.0
 
-# MkDocs 插件
+# MkDocs 鎻掍欢
 mkdocs-callouts>=1.9.0
 mkdocs-glightbox>=0.3.4
 mkdocs-git-revision-date-localized-plugin>=1.2.0
 mkdocs-minify-plugin>=0.7.0
-mkdocs-statistics-plugin
 
-# Markdown 扩展
+# Markdown 鎵╁睍
 pymdown-extensions>=10.0.0
 
-# 其他依赖
+# 鍥惧儚澶勭悊
 Pillow>=9.0.0
 cairosvg>=2.5.0
-
-# 字体和图标支持
-fontawesome>=5.0.0
-
-# 图表支持 (Mermaid)
-mermaid>=8.0.0
-
-mkdocs-callouts>=1.9.0
