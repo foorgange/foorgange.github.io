@@ -16,3 +16,4 @@ pymdown-extensions>=10.0.0
 # 图像处理
 Pillow>=9.0.0
 cairosvg>=2.5.0
+mkdocs-statistics-plugin
