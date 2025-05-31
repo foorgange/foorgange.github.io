@@ -14,7 +14,7 @@ extra_classes:
 
 <br><br><br>
 <div class="hero-section">
-  <h1 style="text-align: center; font-size: 3em; letter-spacing: 0.1em;">欢迎来到路人蛃的博客🥳</h1>
+  <h1 style="text-align: center; font-size: 3em; letter-spacing: 0.1em;">欢迎来到snowfoootball的个人网站</h1>
   <p id="typing-effect" style="text-align: center; font-size: 1.5em; letter-spacing: 0.05em;"></p>
   <!-- 您可以在这里添加更多介绍性文字或按钮 -->
 </div>
@@ -23,9 +23,8 @@ extra_classes:
 document.addEventListener('DOMContentLoaded', function() {
   const textElement = document.getElementById('typing-effect');
   const textsToAnimate = [
-    "Only through hell can one create heaven.",
-    "Only with bleeding fingers can one play the world\'s most sublime tunes."
-  ];
+  "If you cry because the sun has gone out of your life, your tears will prevent you from seeing the stars."
+];
   let currentTextIndex = 0;
   let index = 0;
   let isDeleting = false;

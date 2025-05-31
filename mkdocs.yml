@@ -6,7 +6,7 @@ site_description: 李年的个人网站 # 网站描述，用于搜索引擎元�
 
 # 代码仓库信息 (可选，用于在网站上显示仓库链接)
 repo_url: https://github.com/foorgange/foorgange.github.io.git # 仓库的 URL
-repo_name: Snowfoootball's Site          # 在网站上显示的仓库名称
+repo_name: My-repo        # 在网站上显示的仓库名称
 
 # 版权信息，显示在页脚
 copyright: Copyright &copy; 2025 LiNian
@@ -60,10 +60,10 @@ theme:
 
   # 字体配置
   font:
-    text: JetBrains Mono               # 主要文本字体设置为 JetBrains Mono (通常在 custom.css 中会被覆盖)
+    text: Roboto Condensed               # 主要文本字体设置为Roboto Condensed瘦长字体 (通常在 custom.css 中会被覆盖)
 
   # 网站图标配置
-  favicon: img/favoricon.png                             # 指向网站 favicon.ico 或 .png 文件的路径 (相对于 docs 目录)
+  favicon: img/favoricon.jpg                             # 指向网站 favicon.ico 或 .jpg 文件的路径 (相对于 docs 目录)
                                        # 例如: img/favicon.png
 
   # 主题内置图标配置
@@ -83,11 +83,11 @@ plugins:
   - glightbox:                       # 启用 glightbox 图片灯箱插件，点击图片可放大显示
                                      # 需要安装 `pip install mkdocs-glightbox`
       width: 80%                     # 灯箱宽度为视口的 80%
-  - git-revision-date-localized:     # 显示页面最后修改时间和创建时间 (基于 Git 提交历史)
+  - git-revision-date-localized:     # 显示页面最后修改时间 (基于 Git 提交历史)
                                      # 需要安装 `pip install mkdocs-git-revision-date-localized-plugin`
       type: datetime                 # 显示完整的日期和时间
       timezone: Asia/Shanghai        # 设置时区为上海
-      enable_creation_date: true     # 同时显示页面创建日期
+      enable_creation_date: false    # 不显示页面创建日期，只显示最后更新时间
       exclude:                       # 排除以下页面的日期显示
         - index.md
         - backend/index.md
@@ -181,15 +181,11 @@ extra_css:
 extra:
   social:                            # 社交链接配置，通常在主题中用于显示社交图标链接
     - icon: fontawesome/brands/qq   # 图标路径或 FontAwesome 类名 (需要主题支持)
-      link: \img\qq.png              # 链接地址 (此处是本地图片，可能用于显示QQ二维码)
+      link: /img/qq.png              # 链接地址 (此处是本地图片，可能用于显示QQ二维码)
       name: contact with me!           # 鼠标悬浮提示或链接文字
 
-    - icon: fontawesome/brands/bilibili
-      link: https://space.bilibili.com/382127786?spm_id_from=333.337.0.0           
-      name: subscribe to me!
-
     - icon: csdn-logo
-      link: https://blog.csdn.net/2403_87432910         
+      link: https://blog.csdn.net/snowfoootball?spm=1000.2115.3001.5343      
       name: visit my csdn blog!
 
 # 导航栏配置
@@ -197,36 +193,23 @@ extra:
 nav:
   - Home: index.md             
   - 技术学习: 
-    - index: 技术学习/index.md
-    - 前后端: 
-      - "java高级：自定义注解，反射和动态代理": 技术学习/前后端/java高级：自定义注解，反射和动态代理.md
-      - "深入浅出理解 IOC（控制反转）与 DI（依赖注入）": 技术学习/前后端/深入浅出理解 IOC（控制反转）与 DI（依赖注入）.md
-    - 算法: 
-      - "multiset": 技术学习/算法/multiset.md
-      - "vector": 技术学习/算法/vector.md
-      - "牛客周赛 Round 93题解（个人向A-E）": 技术学习/算法/牛客周赛 Round 93题解（个人向A-E）.md
-    - 人工智能: 技术学习/人工智能/index.md
-    - 其它: 技术学习/其它/index.md
-  - 文学作品: 
-    - index: 文学作品/index.md
-    - 小说: 文学作品/小说/index.md
-    - 散文、闲谈: 文学作品/散文、闲谈/index.md
-    - 诗词古文: 文学作品/诗词古文/index.md
+      - 概览: 技术学习/index.md
+      - 算法:
+          - 技术学习/算法/vector.md
+          - 技术学习/算法/multiset.md
+          - 技术学习/算法/牛客周赛 Round 93题解（个人向A-E）.md
+      - 前后端:
+          - 技术学习/前后端/java高级：自定义注解，反射和动态代理.md
+          - 技术学习/前后端/深入浅出理解 IOC（控制反转）与 DI（依赖注入）.md
+      - 人工智能: 技术学习/人工智能/index.md
+      - 其它: 技术学习/其它/index.md
+  - 文学作品:
+      - 概览: 文学作品/index.md
+      - 小说: 文学作品/小说/index.md
+      - 散文、闲谈: 文学作品/散文、闲谈/index.md
+      - 诗词古文: 文学作品/诗词古文/index.md
   - 日周记总结: 日周记总结/index.md
-  - Backend: 
-    - index: backend/index.md
-    - JavaSE: 
-      - "1 基本语法": backend/javase/1-基本语法.md
-      - "2 方法": backend/javase/2-方法.md
-      - "3 面向对象1": backend/javase/3-面向对象1.md
-      - "4 面向对象2": backend/javase/4-面向对象2.md
-      - "5 核心类1": backend/javase/5-核心类1.md
-      - "6 核心类2": backend/javase/6-核心类2.md
-  - Notes: notes/index.md
-  - Summaries: summaries/index.md
-  - Links: links/index.md
   - About: about/index.md
-  - Blogs: blogs/index.md
 
 # 额外加载的 JavaScript 文件
 # 路径规则同 extra_css

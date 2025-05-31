@@ -7,8 +7,7 @@ comments: true
 
 !!! note ""
     <div align="center" style="font-size:32px;font-weight:bold">
-        技术改变世界，学习成就未来
-
+        业精于勤荒于嬉，行成于思毁于随。
     <br><br>
 
 <div class="grid cards" markdown>
@@ -17,7 +16,7 @@ comments: true
 
     ---
 
-    Web开发、服务器端编程、框架学习等前后端技术的探索与实践。
+    做后端的瞧不起做前端的，做前端的看不上做后端的。
 
     [:octicons-arrow-right-24: 前往阅读](前后端/)
 
@@ -25,7 +24,7 @@ comments: true
 
     ---
 
-    数据结构、算法设计与分析、竞赛题解等算法相关的学习笔记。
+    球球有一天能让我这个蒟蒻也尝尝不打铁的滋味吧！
 
     [:octicons-arrow-right-24: 前往阅读](算法/)
 
@@ -33,7 +32,7 @@ comments: true
 
     ---
 
-    机器学习、深度学习、自然语言处理等AI领域的学习与实践。
+    味大，无需多盐！
 
     [:octicons-arrow-right-24: 前往阅读](人工智能/)
 
@@ -41,7 +40,7 @@ comments: true
 
     ---
 
-    其他技术领域的学习笔记与心得体会。
+    多乎哉？不多也。
 
     [:octicons-arrow-right-24: 前往阅读](其它/)
 

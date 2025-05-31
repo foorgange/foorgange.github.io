@@ -1,5 +1,5 @@
 :root {
-  --md-text-font: "JetBrains Mono", "LXGW WenKai Screen";
+  --md-text-font: "Roboto Condensed", "Microsoft YaHei Light", "微软雅黑 Light", "Hiragino Sans GB", "冬青黑体", sans-serif;
   --md-code-font: "JetBrains Mono";
   --base-border-radius: 0.5rem;
 }
@@ -263,7 +263,7 @@ img:hover {
 
 /* 仅针对首页 (通过 body.homepage 类) 设置背景 */
 body.homepage {
-  background-image: url("../img/hero-background.png"); /* 图片路径相对于 custom.css */
+  background-image: url("../img/hero-background.jpg"); /* 图片路径相对于 custom.css */
   background-size: cover; /* 图片覆盖整个区域 */
   background-position: center center; /* 图片居中显示 */
   background-repeat: no-repeat; /* 图片不重复 */
@@ -379,23 +379,31 @@ body.homepage .md-main {
 /* Vinyl Player Styles */
 .vinyl-player-instance {
   position: fixed;
-  bottom: 70px; /* Adjusted from 20px */
-  left: 20px;
-  width: 80px; /* Adjusted from 100px */
-  height: 80px; /* Adjusted from 100px */
+  bottom: 80px; /* 稍微往上一点 */
+  left: 30px;
+  width: 90px; /* 稍微大一点 */
+  height: 90px; /* 稍微大一点 */
   z-index: 1000;
 }
 
 .vinyl-disk {
-  width: 100%;
-  height: 100%;
-  /* background-image will be set by specific ID below */
+  width: 70px; /* 相应增大 */
+  height: 70px; /* 相应增大 */
+  border-radius: 50%;
   background-size: cover;
   background-position: center;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Adjusted shadow */
-  animation: spin 10s linear infinite; /* Adjusted speed */
-  animation-play-state: paused; /* Initially paused */
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  animation: spin 10s linear infinite;
+  animation-play-state: paused;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+#vinyl-disk-rotator-global {
+  background-image: url("../img/Cherish.jpg");
 }
 
 #vinyl-disk-rotator-home {
@@ -404,6 +412,18 @@ body.homepage .md-main {
 
 #vinyl-disk-rotator-about {
   background-image: url("../img/FindingParadise.jpg");
+}
+
+#vinyl-disk-rotator-tech {
+  background-image: url("../img/技术学习.jpg");
+}
+
+#vinyl-disk-rotator-lit {
+  background-image: url("../img/文学作品.jpg");
+}
+
+#vinyl-disk-rotator-summary {
+  background-image: url("../img/日周记总结.jpg");
 }
 
 @keyframes spin {
@@ -426,7 +446,15 @@ body.homepage .md-main {
   justify-content: center;
   border: 2px solid white;
   box-sizing: border-box;
-  z-index: 1; /* Added z-index */
+  z-index: 1001; /* 提高层级，确保可点击 */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.play-pause-btn:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .play-pause-btn::before {
@@ -438,16 +466,17 @@ body.homepage .md-main {
 
 .play-pause-btn.paused::before {
   content: "\25BA"; /* Play icon (►) */
-  margin-left: 3px; /* Slight adjustment for play icon centering */
+  margin-left: 2px; /* 播放图标居中调整 */
 }
 
 .play-pause-btn.playing::before {
-  content: "\275A\275A"; /* Pause icon (❚❚) - using two vertical bars */
-  letter-spacing: -1px; /* Bring bars closer */
+  content: "\2016\2016"; /* Pause icon using em dashes for better centering */
+  letter-spacing: 1px; /* 暂停图标间距调整 */
+  font-weight: bold;
 }
 
 /* Hide the actual audio element */
-#custom-background-audio-home, #custom-background-audio-about {
+#custom-background-audio-global, #custom-background-audio-home, #custom-background-audio-about, #custom-background-audio-tech, #custom-background-audio-lit, #custom-background-audio-summary {
   display: none;
 }
 
