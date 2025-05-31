@@ -72,8 +72,8 @@ theme:
     repo: fontawesome/brands/git-alt   # 代码仓库链接旁边显示的图标
     edit: material/pencil              # "编辑此页" 按钮图标 (如果启用)
 
-    # 自定义静态模板
-    static_templates:
+  # 自定义静态模板
+  static_templates:
     - 404.html                         # 指定自定义 404 错误页面的 HTML 文件名 (应放置在 custom_dir 或主题的默认位置)
 
 # MkDocs 插件配置
@@ -217,7 +217,5 @@ extra_javascript:
   - js/mathjax.js                  # 自定义 MathJax 配置文件 (通常在 overrides/js/mathjax.js)
   - js/extra.js                    # Sakura falling effect
   - https://cn.vercount.one/js     # 外部 JS (可能是网站统计脚本)
-  - https://cn.vercount.one/js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js # Corrected .jss to .js
