@@ -1,11 +1,3 @@
-<!-- 
-{% if page and page.meta %}
-  DEBUG_EXTRA_CLASSES_RAW: {{ page.meta.extra_classes }}
-  DEBUG_EXTRA_CLASSES_JOINED: "{{ page.meta.extra_classes | join(' ') }}"
-{% else %}
-  DEBUG: page or page.meta is undefined for this page (e.g., 404.html)
-{% endif %}
--->
 {% extends "base.html" %}
 
 {% block hero %}
