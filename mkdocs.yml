@@ -198,11 +198,16 @@ nav:
           - 技术学习/算法/vector.md
           - 技术学习/算法/multiset.md
           - 技术学习/算法/java算法模板.md
+          - 技术学习/算法/拓扑排序.md
           - 技术学习/算法/二分.md
           - 技术学习/算法/算竞常用 C++ STL 用法.md
           - 技术学习/算法/牛客周赛 Round 93题解（个人向A-E）.md
+          - ACM板子总结: 技术学习/算法/ACM板子总结.md/ACM板子总结.md
+          - 基础数据结构合集: 技术学习/算法/基础数据结构合集.md/基础数据结构合集.md
       - 前后端:
+          - 技术学习/前后端/java开发常用注解.md
           - 技术学习/前后端/java高级：自定义注解，反射和动态代理.md
+          - 技术学习/前后端/vue目录架构.md
           - 技术学习/前后端/深入浅出理解 IOC（控制反转）与 DI（依赖注入）.md
           - 技术学习/前后端/从 Javase 到 JavaWeb（学完javase基础之后你该继续学什么？）.md
           - 技术学习/前后端/从 Spring Boot 到 Django —— 后端开发技术类比学习.md
@@ -211,17 +216,23 @@ nav:
       - 人工智能:
           - 技术学习/人工智能/一套基础的大模型训练命令解析.md
           - 技术学习/人工智能/拒绝繁琐概念 _ 零基础基于pytorch手写构建一个神经网络.md
+          - 技术学习/人工智能/基于 Ollama DeepSeek、Dify RAG 和 Fay 框架的高考咨询 AI 交互系统.md
       - 其它:
           - 技术学习/其它/GDScript快速入门（适合有其它编程语言基础）.md
           - 技术学习/其它/github ssh方式推送代码.md
           - 技术学习/其它/通过命令行操作把 本地IDE 项目上传到 GitHub（小白版）.md
+          - 技术学习/其它/快速使用 Mermaid 语法在 draw.io 中绘制流程图与 ER 图.md
   - 文学作品:
       - 概览: 文学作品/index.md
       - 小说: 文学作品/小说/index.md
       - 散文、闲谈: 文学作品/散文、闲谈/index.md
       - 诗词古文: 文学作品/诗词古文/index.md
-  - 日周记总结: 日周记总结/index.md
-  - About: about/index.md
+  - 日周记总结: 
+      - 概览: 日周记总结/index.md
+      - 寒假springboot学习第一周周报: 日周记总结/寒假springboot学习第一周周报.md/寒假springboot学习第一周周报.md
+      - 寒假springboot学习第二周周报: 日周记总结/第二周周报.md/寒假springboot学习第二周周报.md
+      - 寒假springboot学习第四周周报: 日周记总结/第四周周报.md/寒假springboot学习第四周周报.md
+  - About: About/index.md
 
 # 额外加载的 JavaScript 文件
 # 路径规则同 extra_css
