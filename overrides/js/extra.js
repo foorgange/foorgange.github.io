@@ -158,47 +158,191 @@ function startSakuraAnimation() {
 
 // Function to get current theme mode
 function getCurrentTheme() {
-    const htmlElement = document.documentElement;
-    const scheme = htmlElement.getAttribute('data-md-color-scheme');
-    return scheme === 'slate' ? 'dark' : 'light';
+    // 检查是否在首页（有homepage类），因为CSS背景切换只在body.homepage上生效
+    const bodyElement = document.body;
+    const isHomepage = bodyElement && bodyElement.classList.contains('homepage');
+    
+    console.log('Is homepage:', isHomepage);
+    
+    if (!isHomepage) {
+        console.log('Not on homepage, defaulting to light mode');
+        return 'light';
+    }
+    
+    // 检查body元素的data-md-color-scheme属性（与CSS选择器body.homepage[data-md-color-scheme]一致）
+    const scheme = bodyElement.getAttribute('data-md-color-scheme');
+    
+    console.log('Homepage theme detection - body scheme:', scheme);
+    
+    // Material for MkDocs uses 'slate' for dark mode and 'default' for light mode
+    // 根据CSS实现：default=日间模式，slate=夜间模式
+    if (scheme === 'slate') {
+        console.log('Detected: DARK mode (slate)');
+        return 'dark';
+    } else if (scheme === 'default') {
+        console.log('Detected: LIGHT mode (default)');
+        return 'light';
+    } else {
+        console.log('Detected: UNKNOWN scheme:', scheme, '- defaulting to LIGHT mode');
+        return 'light';
+    }
 }
 
 // Function to load appropriate image based on theme
 function loadThemeImage() {
     const theme = getCurrentTheme();
+    // 正确的图片路径逻辑：日间模式用flower.png，夜间模式用ec26d2123cf5215d2bca8eacff76e5e9.png
     const imagePath = theme === 'dark' ? "img/ec26d2123cf5215d2bca8eacff76e5e9.png" : "img/flower.png";
+    
+    console.log('Loading image for theme:', theme, 'Path:', imagePath);
+    
+    // Clear existing animation if running
+    if (canvas && ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        console.log('Cleared existing animation');
+    }
+    
+    // Reset sakura list for new theme
+    if (typeof sakuraList !== 'undefined') {
+        sakuraList.clear();
+        console.log('Cleared sakura list');
+    }
     
     img = new Image();
     img.src = imagePath;
     
     img.onload = function () {
-        console.log("Petal image loaded for " + theme + " mode: " + imagePath);
-        if (!canvas) {
+        console.log("Petal image loaded successfully for " + theme + " mode: " + imagePath);
+        // Always restart animation with new image
+        if (canvas) {
+            // Re-initialize sakura list with new image
+            sakuraList = new SakuraList();
+            console.log('Restarted animation with new theme image');
+        } else {
             startSakuraAnimation();
         }
     }
     img.onerror = function() {
         console.error("Petal image could not be loaded. Path: " + img.src);
+        // Fallback to flower.png if the dark mode image fails
+        if (theme === 'dark') {
+            console.log('Falling back to flower.png');
+            img.src = "img/flower.png";
+        }
     }
 }
 
 // Observer to watch for theme changes
 function observeThemeChanges() {
+    let lastTheme = getCurrentTheme();
+    console.log('Setting up theme observer, initial theme:', lastTheme);
+    
+    // Function to check theme changes
+    function checkThemeChange() {
+        const currentTheme = getCurrentTheme();
+        if (currentTheme !== lastTheme) {
+            console.log('Theme changed from', lastTheme, 'to', currentTheme);
+            lastTheme = currentTheme;
+            loadThemeImage();
+        }
+    }
+    
+    // MutationObserver for all data-md-color-* attribute changes
     const observer = new MutationObserver(function(mutations) {
+        console.log('MutationObserver triggered, mutations:', mutations.length);
+        let themeRelatedChange = false;
         mutations.forEach(function(mutation) {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'data-md-color-scheme') {
-                loadThemeImage();
+            console.log('Mutation type:', mutation.type, 'attribute:', mutation.attributeName);
+            if (mutation.type === 'attributes' && mutation.attributeName && mutation.attributeName.startsWith('data-md-color-')) {
+                themeRelatedChange = true;
+            }
+        });
+        
+        if (themeRelatedChange) {
+            console.log('Theme-related attribute changed, checking theme...');
+            // Use setTimeout to ensure all attributes are updated
+            setTimeout(checkThemeChange, 50);
+        }
+    });
+    
+    // Observe the body element for all data-md-color-* changes
+    console.log('Starting to observe body element for theme changes');
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['data-md-color-scheme', 'data-md-color-primary', 'data-md-color-accent']
+    });
+    
+    // Also observe html element as backup
+    if (document.documentElement) {
+        console.log('Also observing html element for theme changes');
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-md-color-scheme', 'data-md-color-primary', 'data-md-color-accent']
+        });
+    }
+    
+    // Periodic check as fallback (every 500ms)
+    const periodicCheck = setInterval(function() {
+        const currentTheme = getCurrentTheme();
+        if (currentTheme !== lastTheme) {
+            console.log('Periodic check detected theme change from', lastTheme, 'to', currentTheme);
+            lastTheme = currentTheme;
+            loadThemeImage();
+        }
+    }, 500);
+    
+    // Store interval ID for potential cleanup
+    window.themeCheckInterval = periodicCheck;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing theme detection...');
+    
+    // 检查是否在首页，只在首页启动樱花动画
+    const isHomepage = document.body && document.body.classList.contains('homepage');
+    console.log('Is homepage on DOM load:', isHomepage);
+    
+    if (!isHomepage) {
+        console.log('Not on homepage, skipping sakura animation initialization');
+        return;
+    }
+    
+    // Wait a bit for Material theme to be fully initialized
+    setTimeout(function() {
+        console.log('Starting theme image loading on homepage...');
+        loadThemeImage();
+        observeThemeChanges();
+    }, 100);
+    
+    // Also check after a longer delay to catch any late theme initialization
+    setTimeout(function() {
+        console.log('Secondary theme check on homepage...');
+        const currentTheme = getCurrentTheme();
+        console.log('Secondary check - current theme:', currentTheme);
+        loadThemeImage();
+    }, 1000);
+});
+
+// 也监听homepage类的添加（以防类是在DOM加载后添加的）
+if (typeof MutationObserver !== 'undefined') {
+    const bodyClassObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                const isHomepage = document.body.classList.contains('homepage');
+                console.log('Body class changed, is homepage:', isHomepage);
+                if (isHomepage && !img) {
+                    console.log('Homepage class added, initializing sakura animation');
+                    loadThemeImage();
+                    observeThemeChanges();
+                }
             }
         });
     });
     
-    observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-md-color-scheme']
-    });
+    if (document.body) {
+        bodyClassObserver.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+    }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadThemeImage();
-    observeThemeChanges();
-});
