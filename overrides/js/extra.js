@@ -247,7 +247,41 @@ function observeThemeChanges() {
         }
     }
     
-    // MutationObserver for all data-md-color-* attribute changes
+    // 直接监听Material for MkDocs的主题切换radio按钮
+    function setupPaletteListeners() {
+        const paletteInputs = document.querySelectorAll('input[data-md-color-scheme]');
+        console.log('Found palette radio inputs:', paletteInputs.length);
+        
+        paletteInputs.forEach((input, index) => {
+            console.log(`Palette input ${index}:`, {
+                scheme: input.getAttribute('data-md-color-scheme'),
+                primary: input.getAttribute('data-md-color-primary'),
+                accent: input.getAttribute('data-md-color-accent')
+            });
+            
+            input.addEventListener('change', function() {
+                if (this.checked) {
+                    console.log('Theme switched via radio button:', {
+                        scheme: this.getAttribute('data-md-color-scheme'),
+                        primary: this.getAttribute('data-md-color-primary'),
+                        accent: this.getAttribute('data-md-color-accent')
+                    });
+                    
+                    // 立即更新主题，稍微延迟确保DOM更新完成
+                    setTimeout(() => {
+                        checkThemeChange();
+                    }, 100);
+                }
+            });
+        });
+        
+        return paletteInputs.length > 0;
+    }
+    
+    // 尝试设置palette监听器
+    const paletteFound = setupPaletteListeners();
+    
+    // MutationObserver for all data-md-color-* attribute changes (作为备用)
     const observer = new MutationObserver(function(mutations) {
         console.log('MutationObserver triggered, mutations:', mutations.length);
         let themeRelatedChange = false;
@@ -260,7 +294,6 @@ function observeThemeChanges() {
         
         if (themeRelatedChange) {
             console.log('Theme-related attribute changed, checking theme...');
-            // Use setTimeout to ensure all attributes are updated
             setTimeout(checkThemeChange, 50);
         }
     });
@@ -272,27 +305,21 @@ function observeThemeChanges() {
         attributeFilter: ['data-md-color-scheme', 'data-md-color-primary', 'data-md-color-accent']
     });
     
-    // Also observe html element as backup
-    if (document.documentElement) {
-        console.log('Also observing html element for theme changes');
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['data-md-color-scheme', 'data-md-color-primary', 'data-md-color-accent']
-        });
+    // 如果没有找到palette按钮，使用定时检查作为备用
+    if (!paletteFound) {
+        console.log('No palette inputs found, using periodic check as fallback');
+        const periodicCheck = setInterval(function() {
+            const currentTheme = getCurrentTheme();
+            if (currentTheme !== lastTheme) {
+                console.log('Periodic check detected theme change from', lastTheme, 'to', currentTheme);
+                lastTheme = currentTheme;
+                loadThemeImage();
+            }
+        }, 500);
+        
+        // Store interval ID for potential cleanup
+        window.themeCheckInterval = periodicCheck;
     }
-    
-    // Periodic check as fallback (every 500ms)
-    const periodicCheck = setInterval(function() {
-        const currentTheme = getCurrentTheme();
-        if (currentTheme !== lastTheme) {
-            console.log('Periodic check detected theme change from', lastTheme, 'to', currentTheme);
-            lastTheme = currentTheme;
-            loadThemeImage();
-        }
-    }, 500);
-    
-    // Store interval ID for potential cleanup
-    window.themeCheckInterval = periodicCheck;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
