@@ -60,7 +60,7 @@ theme:
 
   # 字体配置
   font:
-    text: Roboto Condensed               # 主要文本字体设置为Roboto Condensed瘦长字体 (通常在 custom.css 中会被覆盖)
+    text: JetBrains Mono             # (通常在 custom.css 中会被覆盖)
 
   # 网站图标配置
   favicon: img/favoricon.jpg                             # 指向网站 favicon.ico 或 .jpg 文件的路径 (相对于 docs 目录)

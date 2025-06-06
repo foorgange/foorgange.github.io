@@ -263,7 +263,6 @@ img:hover {
 
 /* 仅针对首页 (通过 body.homepage 类) 设置背景 */
 body.homepage {
-  background-image: url("../img/hero-background.jpg"); /* 图片路径相对于 custom.css */
   background-size: cover; /* 图片覆盖整个区域 */
   background-position: center center; /* 图片居中显示 */
   background-repeat: no-repeat; /* 图片不重复 */
@@ -273,6 +272,16 @@ body.homepage {
   overflow: hidden; /* 防止body出现滚动条，因为内容会在.md-main中滚动 */
   position: relative; /* For z-index stacking context */
   z-index: 0; /* Base layer for background */
+}
+
+/* 日间模式背景图片 */
+body.homepage[data-md-color-scheme="default"] {
+  background-image: url("../img/hero-background.jpg"); /* 日间模式背景图片 */
+}
+
+/* 夜间模式背景图片 */
+body.homepage[data-md-color-scheme="slate"] {
+  background-image: url("../img/girl_smile_stars_975800_3840x2400.jpg"); /* 夜间模式背景图片 */
 }
 
 /* 使首页的头部导航栏背景透明 */
@@ -404,26 +413,6 @@ body.homepage .md-main {
 
 #vinyl-disk-rotator-global {
   background-image: url("../img/Cherish.jpg");
-}
-
-#vinyl-disk-rotator-home {
-  background-image: url("../img/Cherish.jpg");
-}
-
-#vinyl-disk-rotator-about {
-  background-image: url("../img/FindingParadise.jpg");
-}
-
-#vinyl-disk-rotator-tech {
-  background-image: url("../img/技术学习.jpg");
-}
-
-#vinyl-disk-rotator-lit {
-  background-image: url("../img/文学作品.jpg");
-}
-
-#vinyl-disk-rotator-summary {
-  background-image: url("../img/日周记总结.jpg");
 }
 
 @keyframes spin {

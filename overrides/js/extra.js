@@ -156,15 +156,49 @@ function startSakuraAnimation() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    img = new Image();
-    img.src = "img/flower.png"; 
+// Function to get current theme mode
+function getCurrentTheme() {
+    const htmlElement = document.documentElement;
+    const scheme = htmlElement.getAttribute('data-md-color-scheme');
+    return scheme === 'slate' ? 'dark' : 'light';
+}
 
+// Function to load appropriate image based on theme
+function loadThemeImage() {
+    const theme = getCurrentTheme();
+    const imagePath = theme === 'dark' ? "img/ec26d2123cf5215d2bca8eacff76e5e9.png" : "img/flower.png";
+    
+    img = new Image();
+    img.src = imagePath;
+    
     img.onload = function () {
-        console.log("Petal image loaded.");
-        startSakuraAnimation();
+        console.log("Petal image loaded for " + theme + " mode: " + imagePath);
+        if (!canvas) {
+            startSakuraAnimation();
+        }
     }
     img.onerror = function() {
-        console.error("Petal image (flower.png) could not be loaded. Path: " + img.src);
+        console.error("Petal image could not be loaded. Path: " + img.src);
     }
+}
+
+// Observer to watch for theme changes
+function observeThemeChanges() {
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'data-md-color-scheme') {
+                loadThemeImage();
+            }
+        });
+    });
+    
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-md-color-scheme']
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadThemeImage();
+    observeThemeChanges();
 });
