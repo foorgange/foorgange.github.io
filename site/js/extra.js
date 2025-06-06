@@ -164,15 +164,10 @@ function getCurrentTheme() {
     
     console.log('Is homepage:', isHomepage);
     
-    if (!isHomepage) {
-        console.log('Not on homepage, defaulting to light mode');
-        return 'light';
-    }
-    
-    // 检查body元素的data-md-color-scheme属性（与CSS选择器body.homepage[data-md-color-scheme]一致）
+    // 检查body元素的data-md-color-scheme属性
     const scheme = bodyElement.getAttribute('data-md-color-scheme');
     
-    console.log('Homepage theme detection - body scheme:', scheme);
+    console.log('Theme detection - body scheme:', scheme, 'isHomepage:', isHomepage);
     
     // Material for MkDocs uses 'slate' for dark mode and 'default' for light mode
     // 根据CSS实现：default=日间模式，slate=夜间模式
@@ -237,39 +232,88 @@ function observeThemeChanges() {
     let lastTheme = getCurrentTheme();
     console.log('Setting up theme observer, initial theme:', lastTheme);
     
-    // Simple MutationObserver for data-md-color-scheme attribute changes
+    // Function to check theme changes
+    function checkThemeChange() {
+        const currentTheme = getCurrentTheme();
+        if (currentTheme !== lastTheme) {
+            console.log('Theme changed from', lastTheme, 'to', currentTheme);
+            lastTheme = currentTheme;
+            loadThemeImage();
+        }
+    }
+    
+    // 直接监听Material for MkDocs的主题切换radio按钮
+    function setupPaletteListeners() {
+        const paletteInputs = document.querySelectorAll('input[data-md-color-scheme]');
+        console.log('Found palette radio inputs:', paletteInputs.length);
+        
+        paletteInputs.forEach((input, index) => {
+            console.log(`Palette input ${index}:`, {
+                scheme: input.getAttribute('data-md-color-scheme'),
+                primary: input.getAttribute('data-md-color-primary'),
+                accent: input.getAttribute('data-md-color-accent')
+            });
+            
+            input.addEventListener('change', function() {
+                if (this.checked) {
+                    console.log('Theme switched via radio button:', {
+                        scheme: this.getAttribute('data-md-color-scheme'),
+                        primary: this.getAttribute('data-md-color-primary'),
+                        accent: this.getAttribute('data-md-color-accent')
+                    });
+                    
+                    // 立即更新主题，稍微延迟确保DOM更新完成
+                    setTimeout(() => {
+                        checkThemeChange();
+                    }, 100);
+                }
+            });
+        });
+        
+        return paletteInputs.length > 0;
+    }
+    
+    // 尝试设置palette监听器
+    const paletteFound = setupPaletteListeners();
+    
+    // MutationObserver for all data-md-color-* attribute changes (作为备用)
     const observer = new MutationObserver(function(mutations) {
         console.log('MutationObserver triggered, mutations:', mutations.length);
+        let themeRelatedChange = false;
         mutations.forEach(function(mutation) {
             console.log('Mutation type:', mutation.type, 'attribute:', mutation.attributeName);
-            if (mutation.type === 'attributes' && mutation.attributeName === 'data-md-color-scheme') {
-                const currentTheme = getCurrentTheme();
-                console.log('Theme attribute changed - old:', lastTheme, 'new:', currentTheme);
-                if (currentTheme !== lastTheme) {
-                    console.log('Theme changed from', lastTheme, 'to', currentTheme);
-                    lastTheme = currentTheme;
-                    loadThemeImage();
-                } else {
-                    console.log('Theme unchanged, no action needed');
-                }
+            if (mutation.type === 'attributes' && mutation.attributeName && mutation.attributeName.startsWith('data-md-color-')) {
+                themeRelatedChange = true;
             }
         });
+        
+        if (themeRelatedChange) {
+            console.log('Theme-related attribute changed, checking theme...');
+            setTimeout(checkThemeChange, 50);
+        }
     });
     
-    // Observe the body element for data-md-color-scheme changes (same as background image switching)
+    // Observe the body element for all data-md-color-* changes
     console.log('Starting to observe body element for theme changes');
     observer.observe(document.body, {
         attributes: true,
-        attributeFilter: ['data-md-color-scheme']
+        attributeFilter: ['data-md-color-scheme', 'data-md-color-primary', 'data-md-color-accent']
     });
     
-    // Also observe html element as backup
-    if (document.documentElement) {
-        console.log('Also observing html element for theme changes');
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['data-md-color-scheme']
-        });
+    // 如果没有找到palette按钮，使用定时检查作为备用
+    if (!paletteFound) {
+        console.log('No palette inputs found, using periodic check as fallback');
+        const periodicCheck = setInterval(function() {
+            const currentTheme = getCurrentTheme();
+            if (currentTheme !== lastTheme) {
+                console.log('Periodic check detected theme change from', lastTheme, 'to', currentTheme);
+                lastTheme = currentTheme;
+                loadThemeImage();
+            }
+        }, 500);
+        
+        // Store interval ID for potential cleanup
+        window.themeCheckInterval = periodicCheck;
     }
 }
 

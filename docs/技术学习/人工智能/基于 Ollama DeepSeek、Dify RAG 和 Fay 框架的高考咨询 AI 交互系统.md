@@ -1,6 +1,6 @@
-# 大挑
 
-## **基于 Ollama DeepSeek、Dify RAG 和 Fay 框架的高考咨询 AI 交互系统**
+
+# **基于 Ollama DeepSeek、Dify RAG 和 Fay 框架的高考咨询 AI 交互系统**
 
 ### **一、项目概述**
 
