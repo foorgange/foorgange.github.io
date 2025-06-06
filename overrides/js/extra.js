@@ -164,15 +164,10 @@ function getCurrentTheme() {
     
     console.log('Is homepage:', isHomepage);
     
-    if (!isHomepage) {
-        console.log('Not on homepage, defaulting to light mode');
-        return 'light';
-    }
-    
-    // 检查body元素的data-md-color-scheme属性（与CSS选择器body.homepage[data-md-color-scheme]一致）
+    // 检查body元素的data-md-color-scheme属性
     const scheme = bodyElement.getAttribute('data-md-color-scheme');
     
-    console.log('Homepage theme detection - body scheme:', scheme);
+    console.log('Theme detection - body scheme:', scheme, 'isHomepage:', isHomepage);
     
     // Material for MkDocs uses 'slate' for dark mode and 'default' for light mode
     // 根据CSS实现：default=日间模式，slate=夜间模式
