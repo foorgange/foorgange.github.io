@@ -55,14 +55,14 @@ docker compose up -d
 
 拉取镜像,如果遇到拉取失败,可以参考我主页另一篇文章来配置代理和镜像源.
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/b4384f38fb8e438cac56f80fab69c8d2.png#pic_center)  
+![](https://i-blog.csdnimg.cn/direct/b4384f38fb8e438cac56f80fab69c8d2.png#pic_center)  
 拉取完成后进入dockerdesktop,可以看到拉取的服务,点开ngix服务,直接点击80:80,就可以进入dify网站
 
 第一次需要注册账号  
-​![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/c9c147c53d0c4fbe91fb35a803d04794.png#pic_center)  
+​![](https://i-blog.csdnimg.cn/direct/c9c147c53d0c4fbe91fb35a803d04794.png#pic_center)  
 图中是我之前创建的应用,dify的功能十分强大,大家可以自由探索.
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/a5b1d2284bfd4b7686f454ec94b87c34.png#pic_center)
+![](https://i-blog.csdnimg.cn/direct/a5b1d2284bfd4b7686f454ec94b87c34.png#pic_center)
 
 ## ollama配置
 
@@ -70,8 +70,8 @@ docker compose up -d
 
 完成安装后，在终端输入命令 ollama，若显示版本号和帮助信息，表示安装成功。
 
-如图进行环境变量配置![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/3b0366eb8285426295bebe09eb9b5792.png#pic_center)  
-​![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/d0832d5f9d7447fba2501650c40e9334.png#pic_center)
+如图进行环境变量配置![](https://i-blog.csdnimg.cn/direct/3b0366eb8285426295bebe09eb9b5792.png#pic_center)  
+​![](https://i-blog.csdnimg.cn/direct/d0832d5f9d7447fba2501650c40e9334.png#pic_center)
 
 ###### 下载模型步骤
 
@@ -101,7 +101,7 @@ ollama run gpt4all
 
 进入交互式界面，你可以输入文本，让模型进行对话测试。
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/c1ae5311cf1b497686423ec853ed8cbb.png#pic_center)  
+![](https://i-blog.csdnimg.cn/direct/c1ae5311cf1b497686423ec853ed8cbb.png#pic_center)  
 接下来就可以在dify新建智能体时选择模型时接入ollama了,注意模型名称不能错,然后url使用
 
 ```bash

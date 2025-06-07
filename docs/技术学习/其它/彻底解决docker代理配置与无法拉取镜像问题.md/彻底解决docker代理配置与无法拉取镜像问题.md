@@ -20,7 +20,7 @@
 
 #### 2.打开设置,如图界面
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/74829fb0492a4bd8990fa3b027481714.png#pic_center)
+![](https://i-blog.csdnimg.cn/direct/74829fb0492a4bd8990fa3b027481714.png#pic_center)
 
 #### 3. 将以下代码替换框框中的代码
 
@@ -48,7 +48,7 @@
 
 ## 情况:clash配置出错
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/02a1530f253c4df1b301a79c0d6ee8c3.png#pic_center)  
+![](https://i-blog.csdnimg.cn/direct/02a1530f253c4df1b301a79c0d6ee8c3.png#pic_center)  
 在clash的设置里找到你的当前配置
 
     这里解释部分配置
@@ -104,7 +104,7 @@ netstat -ano | findstr :7897
 
 如果你不是上面这种简单情况,那么你的问题就多了,可以尝试以下解决方案
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/653e1377225d450e827ea57605f226eb.png#pic_center)Docker Desktop → Settings → Resources → Proxies  
+![](https://i-blog.csdnimg.cn/direct/653e1377225d450e827ea57605f226eb.png#pic_center)Docker Desktop → Settings → Resources → Proxies  
 你可以在设置里打开此界面,手动配置其走7897daili端口
 
 ```bash
