@@ -188,6 +188,10 @@ extra:
       link: https://blog.csdn.net/snowfoootball?spm=1000.2115.3001.5343      
       name: visit my csdn blog!
 
+    - icon: bili
+      link: https://space.bilibili.com/1270266112?spm_id_from=333.1007.0.0
+      name: visit my bilibili space!
+
 # 导航栏配置
 # 定义网站的页面结构和导航顺序
 nav:
