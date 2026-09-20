@@ -192,47 +192,51 @@ function getCurrentTheme() {
 }
 
 // Function to load appropriate image based on theme
+// 修复说明（原实现有三个问题，导致"切换日夜后飘落花瓣不变、要刷新才变"）：
+//   1. `if (canvas && ctx)` 里的 ctx 是笔误（全局变量实际叫 cxt），切换主题时 canvas 已存在，
+//      读取未声明的 ctx 直接抛 ReferenceError，函数当场中断，后面的换图逻辑从未执行；
+//   2. `sakuraList` 是 startSakuraAnimation 内的局部变量，这里赋值只是造了个无用的全局变量；
+//   3. 直接改写全局 img.src，新图加载期间 draw() 因 img.complete 为 false 会停画花瓣（闪断）。
+// 现改为：先加载新图，加载成功后再原子替换全局 img —— 动画循环每帧读取全局 img，替换即生效。
+var petalLoadingPath = null;
+
 function loadThemeImage() {
     const theme = getCurrentTheme();
-    // 正确的图片路径逻辑：日间模式用flower.png，夜间模式用ec26d2123cf5215d2bca8eacff76e5e9.png
+    // 日间用 flower.png，夜间用 ec26d2123cf5215d2bca8eacff76e5e9.png
     const imagePath = theme === 'dark' ? "img/ec26d2123cf5215d2bca8eacff76e5e9.png" : "img/flower.png";
-    
-    console.log('Loading image for theme:', theme, 'Path:', imagePath);
-    
-    // Clear existing animation if running
-    if (canvas && ctx) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        console.log('Cleared existing animation');
+
+    // 已经是当前主题的图且加载完成 → 无需处理
+    if (img && img.complete && img.naturalWidth > 0 && img.src.indexOf(imagePath) !== -1) {
+        return;
     }
-    
-    // Reset sakura list for new theme
-    if (typeof sakuraList !== 'undefined') {
-        sakuraList.clear();
-        console.log('Cleared sakura list');
+    // 同一张图正在加载中 → 不重复发起
+    if (petalLoadingPath === imagePath) {
+        return;
     }
-    
-    img = new Image();
-    img.src = imagePath;
-    
-    img.onload = function () {
-        console.log("Petal image loaded successfully for " + theme + " mode: " + imagePath);
-        // Always restart animation with new image
-        if (canvas) {
-            // Re-initialize sakura list with new image
-            sakuraList = new SakuraList();
-            console.log('Restarted animation with new theme image');
-        } else {
-            startSakuraAnimation();
+    petalLoadingPath = imagePath;
+
+    const next = new Image();
+    next.onload = function () {
+        petalLoadingPath = null;
+        img = next; // 原子替换：动画循环下一帧即用新图，不闪断
+        if (!canvas) {
+            startSakuraAnimation(); // 首次进入：图片就绪后再启动动画
         }
-    }
-    img.onerror = function() {
-        console.error("Petal image could not be loaded. Path: " + img.src);
-        // Fallback to flower.png if the dark mode image fails
+    };
+    next.onerror = function () {
+        petalLoadingPath = null;
+        console.error("Petal image could not be loaded. Path: " + imagePath);
         if (theme === 'dark') {
-            console.log('Falling back to flower.png');
-            img.src = "img/flower.png";
+            // 夜间图加载失败时回退到日间图
+            const fallback = new Image();
+            fallback.onload = function () {
+                img = fallback;
+                if (!canvas) startSakuraAnimation();
+            };
+            fallback.src = "img/flower.png";
         }
-    }
+    };
+    next.src = imagePath;
 }
 
 // Observer to watch for theme changes
