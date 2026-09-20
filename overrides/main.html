@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+  <!-- 性能优化：预连接外部 CDN（MathJax / 字体 / 统计），仅加速握手，不改变任何渲染 -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://gcore.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://cn.vercount.one">
+{% endblock %}
+
 {% block hero %}
   {{ super() }} {# This preserves any hero content the page might already have #}
   <!-- 全局音乐播放器，在所有页面显示 -->
@@ -7,7 +14,7 @@
     <div id="vinyl-disk-rotator-global" class="vinyl-disk"></div>
     <div id="play-pause-button-global" class="play-pause-btn paused"></div>
   </div>
-  <audio id="custom-background-audio-global" loop>
+  <audio id="custom-background-audio-global" loop preload="none">
     <source src="{{ 'audio/邓垚《诀别书》百万豪装录音棚大声听_音频.mp4' | url }}" type="audio/mp4">
     <source src="{{ 'audio/Cherish.mp3' | url }}" type="audio/mpeg">
     您的浏览器不支持音频播放。

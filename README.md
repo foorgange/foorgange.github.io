@@ -42,3 +42,10 @@ foorgange.github.io/
 ├── mkdocs.yml          # MkDocs 站点配置
 └── requirements.txt    # Python 依赖
 ```
+
+## 第三方资源
+
+- [ba-click-fx](https://github.com/CialloKing/ba-click-fx)（MIT License，版权归原作者 CialloKing）
+  桌面端「蔚蓝档案」风格点击特效与光标拖尾。库文件自托管于 `overrides/js/ba-click-fx.js`，
+  由 `overrides/js/cursor-fx.js` 按需加载：仅桌面精确指针设备启用，页面 load 后空闲时段拉取，移动端不加载。
+  主题色、拖尾开关等可调项集中在该文件顶部的「可调项」区块。

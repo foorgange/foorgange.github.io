@@ -106,6 +106,11 @@ function startSakuraAnimation() {
         return;
     }
 
+    // 尊重系统的"减弱动态效果"设置（无障碍），不改变默认用户的画面
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || function(callback) { window.setTimeout(callback, 1000 / 60); };
 
     canvas = document.createElement('canvas');
@@ -125,7 +130,10 @@ function startSakuraAnimation() {
     cxt = canvas.getContext('2d');
     var sakuraList = new SakuraList();
 
-    for (var i = 0; i < 25; i++) { 
+    // 移动端减少花瓣数量（宽屏 25 片 / 窄屏 10 片），降低 CPU 与电量消耗
+    var petalCount = window.innerWidth <= 960 ? 10 : 25;
+
+    for (var i = 0; i < petalCount; i++) {
         var sakura, randomX, randomY, randomS, randomR, randomFnx, randomFny, randomFnR;
         randomX = getRandom('x');
         randomY = getRandom('y');

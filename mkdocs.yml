@@ -303,8 +303,8 @@ nav:
 # 额外加载的 JavaScript 文件
 # 路径规则同 extra_css
 extra_javascript:
-  - js/mathjax.js                  # 自定义 MathJax 配置文件 (通常在 overrides/js/mathjax.js)
+  - js/mathjax.js                  # MathJax 按需加载器（仅公式页加载，替代原全站加载 + 已废弃的 polyfill.io）
   - js/extra.js                    # Sakura falling effect
+  - js/perf.js                     # 性能优化：首屏外图片懒加载 + 宽表格横向滚动容器
+  - js/cursor-fx.js                # 蔚蓝档案风格点击特效/光标拖尾（仅桌面端启用，库自托管）
   - https://cn.vercount.one/js     # 外部 JS (可能是网站统计脚本)
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

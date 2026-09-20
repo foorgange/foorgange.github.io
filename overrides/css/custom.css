@@ -481,3 +481,72 @@ body.homepage #canvas_sakura {
   opacity: 0.6;  
   z-index: 1; /* Above body background, below hero text and header */
 }
+
+/* ==========================================================================
+   宽表格横向滚动容器（全端生效，无视觉变化；由 js/perf.js 自动包裹）
+   ========================================================================== */
+.md-typeset__table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   移动端适配与体验优化（仅影响 ≤59.9375em / 959px，桌面端视觉完全不变）
+   ========================================================================== */
+@media screen and (max-width: 59.9375em) {
+  /* 1. 代码块行号在窄屏挤占空间，隐藏以提升可读性（标题锚点链接不受影响） */
+  .md-typeset .linenos {
+    display: none;
+  }
+
+  /* 2. 首页：修复 100vh 在移动浏览器的高度裁剪问题，内容超出时可纵向滚动 */
+  body.homepage {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-attachment: scroll; /* 避免 fixed 在移动端的重绘开销与 iOS 不一致 */
+  }
+
+  /* 3. 首页 Hero 文字缩小，避免 48px 标题 + 24px 打字句占满小屏；
+        隐藏首页顶部占位 <br>，改用受控间距 */
+  body.homepage .md-content__inner > br {
+    display: none;
+  }
+  body.homepage .hero-section {
+    margin-top: 10vh;
+  }
+  body.homepage .hero-section h1 {
+    font-size: 1.9em !important;
+    letter-spacing: 0.05em !important;
+  }
+  body.homepage .hero-section p {
+    font-size: 1.05em !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  /* 4. 黑胶播放器：避让 iPhone 底部安全区，点击热区扩大到约 48px */
+  .vinyl-player-instance {
+    left: 12px;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+    width: 76px;
+    height: 76px;
+  }
+  .vinyl-disk {
+    width: 58px;
+    height: 58px;
+    top: 9px;
+    left: 9px;
+  }
+  .play-pause-btn {
+    width: 34px;
+    height: 34px;
+  }
+  .play-pause-btn::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
+  }
+}
