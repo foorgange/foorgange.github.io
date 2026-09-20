@@ -550,4 +550,66 @@ body.homepage #canvas_sakura {
     position: absolute;
     inset: -7px;
   }
+
+  /* 5. 播放器滚动淡出（配合 main.html 注入的 player-scrolling 类）：
+        长文页滚动时不再压住正文，停止滚动 0.7s 后自动淡回，保持可点击 */
+  .vinyl-player-instance {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .vinyl-player-instance.player-scrolling {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+  }
+
+  /* 6. 栏目索引页 / About：标题与下方的居中引言统一居中，消除"左标题 + 中引言"的割裂感 */
+  body.section-index .md-content__inner > h1 {
+    text-align: center;
+  }
+
+  /* 7. 引言块：正文里内联的 32px 大引言在窄屏过大，且尾部 <br><br> 会撑出一个大片空白的空盒子 */
+  .md-typeset .admonition div[align="center"],
+  .md-typeset details div[align="center"] {
+    font-size: 1.35rem !important; /* 覆盖内联 style="font-size:32px" */
+    line-height: 1.65;
+  }
+  .md-typeset .admonition div[align="center"] br,
+  .md-typeset details div[align="center"] br {
+    display: none; /* 去掉尾部空行，让引言块收紧 */
+  }
+}
+
+/* ==========================================================================
+   404 页面：居中排版（原先标题孤零零挂在左上角，整页空旷）
+   ========================================================================== */
+.not-found {
+  text-align: center;
+  padding: 16vh 0 20vh;
+}
+.not-found__code {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.35em;
+  opacity: 0.9;
+}
+.not-found__text {
+  font-size: 1rem;
+  opacity: 0.7;
+  margin: 0 0 1.8em;
+}
+.not-found__actions {
+  margin: 0;
+}
+.not-found .md-button {
+  border: 1px solid currentColor;
+  border-radius: var(--base-border-radius);
+  padding: 0.4em 1.4em;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+.not-found .md-button:hover {
+  opacity: 1;
+  background-color: rgba(128, 128, 128, 0.12);
 }

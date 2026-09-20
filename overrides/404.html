@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{# 404 页面：居中排版，与站点整体的黑白灰极简风格保持一致 #}
+{% block content %}
+  <div class="not-found">
+    <p class="not-found__code">404</p>
+    <p class="not-found__text">这一页不在书里 —— 也许它掉进了另一个世界。</p>
+    <p class="not-found__actions">
+      <a class="md-button" href="{{ base_url }}">回到首页</a>
+    </p>
+  </div>
+{% endblock %}

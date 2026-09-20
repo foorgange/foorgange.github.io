@@ -115,6 +115,34 @@
   {% if page.url and page.url.startswith('/日周记总结/') %}
     <!-- 日周记总结页面音乐播放器已被全局音乐播放器替代 -->
   {% endif %}
+
+  {# 栏目索引页（技术学习/文学作品/日周记总结/About 等一级目录的 index）：
+     打上 section-index 类，移动端把这些页面的标题与引言统一居中，观感更整 #}
+  {% if page and page.url and not (page.meta and page.meta.home) %}
+    {% set _segs = page.url.rstrip('/').split('/') %}
+    {% if _segs | length == 1 and _segs[0] %}
+      <script>
+        document.body.classList.add('section-index');
+      </script>
+    {% endif %}
+  {% endif %}
+
+  {# 移动端：滚动时淡出音乐播放器，停止滚动后淡入，避免浮动圆盘压住正文 #}
+  <script>
+    (function () {
+      var player = document.getElementById('vinyl-player-wrapper-global');
+      if (!player || !window.matchMedia) return;
+      if (!window.matchMedia('(max-width: 59.9375em)').matches) return; // 仅移动端
+      var idle = null;
+      document.addEventListener('scroll', function () {
+        player.classList.add('player-scrolling');
+        if (idle) clearTimeout(idle);
+        idle = setTimeout(function () {
+          player.classList.remove('player-scrolling');
+        }, 700);
+      }, { passive: true, capture: true }); // capture: 页面内层滚动容器（如首页 body）的滚动也能捕获
+    })();
+  </script>
 {% endblock %}
 
 {# 在页面主要内容之后，页脚之前插入评论区 #}
