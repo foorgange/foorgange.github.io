@@ -389,7 +389,7 @@ body.homepage .md-main {
 .vinyl-player-instance {
   position: fixed;
   bottom: 80px; /* 稍微往上一点 */
-  left: 30px;
+  right: 30px; /* 右下角：页脚版权文字与社交图标都在左侧，右侧无文字遮挡 */
   width: 90px; /* 稍微大一点 */
   height: 90px; /* 稍微大一点 */
   z-index: 1000;
@@ -527,9 +527,10 @@ body.homepage #canvas_sakura {
     letter-spacing: 0.02em !important;
   }
 
-  /* 4. 黑胶播放器：避让 iPhone 底部安全区，点击热区扩大到约 48px */
+  /* 4. 黑胶播放器：镜像到右下角（页脚文字与社交图标都在左侧，右侧无遮挡），
+        并避让 iPhone 底部安全区、点击热区扩大到约 48px */
   .vinyl-player-instance {
-    left: 12px;
+    right: 12px;
     bottom: calc(56px + env(safe-area-inset-bottom, 0px));
     width: 76px;
     height: 76px;
