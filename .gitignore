@@ -1,0 +1,9 @@
+# DSH harness 会话目录
+.dsh/
+
+# MkDocs 本地构建产物
+site/
+
+# Python
+__pycache__/
+*.pyc
