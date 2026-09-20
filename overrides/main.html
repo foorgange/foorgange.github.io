@@ -28,6 +28,19 @@
       
       // 从localStorage获取音频播放状态
       const isPlaying = localStorage.getItem('audio_playing') === 'true';
+
+      // 播放进度持久化：换页时记住进度，下一页续播（原先每换一页都从 0 重新开始）
+      const AUDIO_POS_KEY = 'audio_position';
+      let resumeTarget = 0;
+      try { resumeTarget = parseFloat(localStorage.getItem(AUDIO_POS_KEY) || '0') || 0; } catch (e) {}
+      let lastSavedAt = 0;
+      function savePosition() {
+        try {
+          const t = audio_global ? audio_global.currentTime : 0;
+          // 关键：进度为 0 时不写入 —— 播放起步的首帧 timeupdate 里 currentTime≈0，会把手上的有效进度冲掉
+          if (isFinite(t) && t > 0) localStorage.setItem(AUDIO_POS_KEY, String(t));
+        } catch (e) { /* 隐私模式等场景忽略 */ }
+      }
       
       if (playPauseButton_global && audio_global && vinylDiskRotator_global) {
         playPauseButton_global.addEventListener('click', function() {
@@ -53,7 +66,34 @@
           vinylDiskRotator_global.style.animationPlayState = 'paused';
           audio_global.currentTime = 0;
           localStorage.setItem('audio_playing', 'false');
+          try { localStorage.setItem(AUDIO_POS_KEY, '0'); } catch (e) {} // 播完清掉进度，下次从头开始
         });
+
+        // 播放中每秒记录一次进度；离开页面时再补一次
+        audio_global.addEventListener('timeupdate', function () {
+          const now = Date.now();
+          if (now - lastSavedAt > 1000) { lastSavedAt = now; savePosition(); }
+        });
+        window.addEventListener('pagehide', savePosition);
+        window.addEventListener('beforeunload', savePosition);
+
+        // 续播跳转：媒体可 seek 时跳到上次进度。
+        // 不用单次事件跳转 —— 浏览器切换 <source>、重载媒体时会把进度打回 0，
+        // 只靠 loadedmetadata 那一次可能被随后的重载作废；这里做有限次重试（最多 5 秒）
+        function applyResumePosition() {
+          if (resumeTarget <= 0.5) return;
+          if (Math.abs(audio_global.currentTime - resumeTarget) <= 1) return;
+          try { audio_global.currentTime = resumeTarget; } catch (e) {}
+        }
+        audio_global.addEventListener('loadedmetadata', applyResumePosition);
+        audio_global.addEventListener('canplay', applyResumePosition);
+        let resumeTries = 0;
+        const resumeTimer = setInterval(function () {
+          applyResumePosition();
+          if (++resumeTries > 10 || Math.abs(audio_global.currentTime - resumeTarget) <= 1) {
+            clearInterval(resumeTimer);
+          }
+        }, 500);
         
         audio_global.addEventListener('pause', function() {
           if (!audio_global.ended) {
@@ -71,12 +111,16 @@
           localStorage.setItem('audio_playing', 'true');
         });
         
-        // 根据保存的状态决定是否自动播放
+        // 根据保存的状态决定是否自动播放，并从上次的进度续播
         if (isPlaying) {
+          // preload="none"：先播起来（会顺带触发加载），进度由 applyResumePosition 在
+          // loadedmetadata / canplay 时跳到上次位置，避免 seek 时机不当被忽略
+          applyResumePosition();
           audio_global.play().then(() => {
             playPauseButton_global.classList.remove('paused');
             playPauseButton_global.classList.add('playing');
             vinylDiskRotator_global.style.animationPlayState = 'running';
+            applyResumePosition();
           }).catch(error => {
             console.error("Autoplay failed for global audio:", error);
             playPauseButton_global.classList.remove('playing');
