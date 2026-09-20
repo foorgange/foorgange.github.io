@@ -527,33 +527,26 @@ body.homepage #canvas_sakura {
     letter-spacing: 0.02em !important;
   }
 
-  /* 4. 黑胶播放器：缩小并贴底放置（底部安全区之上），点击热区仍保持约 44px */
+  /* 4. 黑胶播放器：避让 iPhone 底部安全区，点击热区扩大到约 48px */
   .vinyl-player-instance {
-    left: 10px;
-    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-    width: 56px;
-    height: 56px;
+    left: 12px;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+    width: 76px;
+    height: 76px;
   }
   .vinyl-disk {
-    width: 44px;
-    height: 44px;
-    top: 6px;
-    left: 6px;
-    border-width: 1px;
+    width: 58px;
+    height: 58px;
+    top: 9px;
+    left: 9px;
   }
   .play-pause-btn {
-    width: 26px;
-    height: 26px;
-    border-width: 1px;
+    width: 34px;
+    height: 34px;
   }
   .play-pause-btn::after {
     content: "";
     position: absolute;
-    inset: -9px; /* 热区约 44px，符合触屏最小点击尺寸 */
-  }
-
-  /* 5. 页脚底部留出净空带：固定播放器停在这条带子里，不再压住版权文字与社交图标 */
-  .md-footer {
-    padding-bottom: 78px;
+    inset: -7px;
   }
 }
