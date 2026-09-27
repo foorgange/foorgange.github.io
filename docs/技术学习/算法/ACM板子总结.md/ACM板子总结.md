@@ -895,13 +895,13 @@ int main()
 
 ### 2.1 快速幂算法详解
 
-![](https://i-blog.csdnimg.cn/blog_migrate/c43dce09485420a03ad2f4faa4f566d2.png)
+![](assets/c43dce09485420a03ad2f4faa4f566d2.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/8b5f523e7d6d170db8c10dfc0b8efc3b.png)
+![](assets/8b5f523e7d6d170db8c10dfc0b8efc3b.png)
 
 时间复杂度为O(log n)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/3e8b8f7e0ce1a96ad49f0f4fa9debe15.png)
+![](assets/3e8b8f7e0ce1a96ad49f0f4fa9debe15.png)
 
 ```cpp
 #include <iostream>
@@ -1047,7 +1047,7 @@ int main() {
 
 例如，当给定数字序列为 `0,1,0,2,1,0,1,3,2,1,2,1`​ 时，柱子高度图如下所示，最多可以接  个单位的雨水。
 
-![rainwatertrap.png](https://cdn.acwing.com/media/article/image/2020/04/03/19_ba03555675-rainwatertrap.png)
+![rainwatertrap.png](assets/19_ba03555675-rainwatertrap.png)
 
 #### 输入格式
 
@@ -1136,7 +1136,7 @@ int search(int t)
 
 dfs基本应用：类似树的形式，一直向深处搜索，然后进行回溯。
 
-![](https://i-blog.csdnimg.cn/blog_migrate/ac466161c36580f9fd7baddbcb83d389.png)
+![](assets/ac466161c36580f9fd7baddbcb83d389.png)
 
 ```cpp
 #include<bits/stdc++.h>
@@ -1994,7 +1994,7 @@ D 6
 
 6 4 6 5
 
-![](https://i-blog.csdnimg.cn/blog_migrate/629fe2b5558d362425ea4a6c9d30387d.png)
+![](assets/629fe2b5558d362425ea4a6c9d30387d.png)
 
 我们用-1表示空指针。
 
@@ -2014,7 +2014,7 @@ void init()//链表的初始化
 
 (2)向头节点后面插入一个新节点
 
-![](https://i-blog.csdnimg.cn/blog_migrate/0487075fb3da0c6345ad8a12a751c5fd.png)
+![](assets/0487075fb3da0c6345ad8a12a751c5fd.png)
 
 (3)向第k个插入的点后面添加一个点同(2)
 
@@ -2029,7 +2029,7 @@ void add(int k,int x)//向第k个插入的数后面插入一个数
 
 (4)删除头节点
 
-![](https://i-blog.csdnimg.cn/blog_migrate/5b0709f78562e68a8f9a91601bacd67c.png)
+![](assets/5b0709f78562e68a8f9a91601bacd67c.png)
 
 ```cpp
 void remove()//删除头节点
@@ -2362,7 +2362,7 @@ NO
 
 栈：后进先出的数据结构。
 
-![](https://i-blog.csdnimg.cn/blog_migrate/0fd62bbd7db86b69886a6d42ea970af8.png)
+![](assets/0fd62bbd7db86b69886a6d42ea970af8.png)
 
 ```cpp
 // tt表示栈顶
@@ -2590,7 +2590,7 @@ int main()
 
 该数组为 [1 3 -1 -3 5 3 6 7]，k 为 3。
 
-![](https://i-blog.csdnimg.cn/blog_migrate/93bd904a2cce9648d7f1be09d215df1d.png)
+![](assets/93bd904a2cce9648d7f1be09d215df1d.png)
 
 你的任务是确定滑动窗口位于每个位置时，窗口中的最大值和最小值。
 
@@ -2640,7 +2640,7 @@ int main()
 
 (2).先删后插:如果新元素大于等于队尾元素，那就先删除队尾元素(因为队尾不可能成为滑动窗口的最大值），删除队尾tt--,循环删除，直到队列为空或遇到一个大于新元素的值，再插入。
 
-![](https://i-blog.csdnimg.cn/blog_migrate/cfa71fa26d17e94f07ccf89e2a394efd.png)
+![](assets/cfa71fa26d17e94f07ccf89e2a394efd.png)
 
 求最小值的思路相同。
 
@@ -2779,7 +2779,7 @@ ababa
 
 BF算法图示过程(返回匹配成功的位置)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/4cf810983a46bfd36e749ac3c58b7e30.png)
+![](assets/4cf810983a46bfd36e749ac3c58b7e30.png)
 
 思想:
 
@@ -2818,7 +2818,7 @@ int bf(char s[],char t[],int pos)
 
 方法二：找出每次失败i和j的关系。
 
-![](https://i-blog.csdnimg.cn/blog_migrate/895aeec07513453916944506104dca5a.png)
+![](assets/895aeec07513453916944506104dca5a.png)
 
 则下一个位置是i-j+2.
 
@@ -2850,13 +2850,13 @@ int BF(char s[],char t[],int pos)
 
 思路：
 
-![](https://i-blog.csdnimg.cn/blog_migrate/42771039e1b4490c3fb5901ef9929b95.png)
+![](assets/42771039e1b4490c3fb5901ef9929b95.png)
 
 则我们可知next数组的含义，next[i]表示：以i结尾的后缀和从1开始模式串的前缀相等，且相等最大 。
 
 假设我们已知next数组，则模式匹配如下：
 
-![](https://i-blog.csdnimg.cn/blog_migrate/38273daedadafc0dd49549c065d3a423.png)
+![](assets/38273daedadafc0dd49549c065d3a423.png)
 
 思想
 
@@ -2932,7 +2932,7 @@ else nextval[j]\=next[j];
 
 否则nextval[j]\=next[j].
 
-![](https://i-blog.csdnimg.cn/blog_migrate/33c7b0b5ac5a2c3505ba276bd51844f3.png)
+![](assets/33c7b0b5ac5a2c3505ba276bd51844f3.png)
 
 ```cpp
 void get_nextval(chat t[],int next[],int nextval[])
@@ -3273,7 +3273,7 @@ st[]数组标记合数
 
 (1)朴素筛法O(nlogn)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/a45045472bf705d2b7cc497a97a09f28.png)
+![](assets/a45045472bf705d2b7cc497a97a09f28.png)
 
 ```cpp
 #include<iostream>
@@ -3313,7 +3313,7 @@ int main()
 
 (2)埃氏筛法O(nloglogn)近乎O(n)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/3d52228ce0fc018d250a996d5313550f.png)
+![](assets/3d52228ce0fc018d250a996d5313550f.png)
 
 ```cpp
 #include<iostream>
@@ -3357,7 +3357,7 @@ int main()
 
 思路：每个合数，只会被它的最小质因子筛掉.
 
-![](https://i-blog.csdnimg.cn/blog_migrate/25b34be17b4ecdd257acd16cbbd53cf5.png)
+![](assets/25b34be17b4ecdd257acd16cbbd53cf5.png)
 
 ```cpp
 void get_primes(){
@@ -3419,7 +3419,7 @@ int main()
 
 ## 21. 约数
 
-![](https://i-blog.csdnimg.cn/blog_migrate/ffd1753b02172e4d92721ed02cf07771.png)
+![](assets/ffd1753b02172e4d92721ed02cf07771.png)
 
 ### 21.1 试除法求约数
 
@@ -3531,9 +3531,9 @@ int main()
 
 12
 
-![](https://i-blog.csdnimg.cn/blog_migrate/6d0c4dc2f9ca0f319d0c0359cf4c4a95.png)
+![](assets/6d0c4dc2f9ca0f319d0c0359cf4c4a95.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/bf2d9eb56fcefcfcfae1eeda8f257097.png)
+![](assets/bf2d9eb56fcefcfcfae1eeda8f257097.png)
 
 ```cpp
 #include<bits/stdc++.h>
@@ -3599,7 +3599,7 @@ int main()
 
 252
 
-![](https://i-blog.csdnimg.cn/blog_migrate/8820126454e9090587d6c1fea281c9a1.png)
+![](assets/8820126454e9090587d6c1fea281c9a1.png)
 
 ```cpp
 #include <iostream>
@@ -3684,9 +3684,9 @@ int main()
 
 2
 
-![](https://i-blog.csdnimg.cn/blog_migrate/a7b59c7101b98feb199d1bbb29d7f1a9.png)
+![](assets/a7b59c7101b98feb199d1bbb29d7f1a9.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/3680976b9de16cb3b0bd9b2e83a42217.png)
+![](assets/3680976b9de16cb3b0bd9b2e83a42217.png)
 
 ```cpp
 #include<bits/stdc++.h>
@@ -3828,7 +3828,7 @@ STL里面的堆又称为优先队列；
 
 我们用一维数组来维护一个堆，规定数组的下标从1开始，每个下标的左右儿子分别为2\*x，2\*x+1；
 
-![](https://i-blog.csdnimg.cn/blog_migrate/c03be99dee2ca2b0b3bdd2a354d6f14a.png)
+![](assets/c03be99dee2ca2b0b3bdd2a354d6f14a.png)
 
 我们先讲述堆中两个最基本的操作down(x),up(x)两个操作。
 
@@ -4000,7 +4000,7 @@ DM
 
 我们需要维护第i个插入的数，则需要再开两个数组维护信息；
 
-![](https://i-blog.csdnimg.cn/blog_migrate/cb2d0b08eccb7b0d9c2b8bb434d81a66.png)
+![](assets/cb2d0b08eccb7b0d9c2b8bb434d81a66.png)
 
 AC代码
 
@@ -4148,7 +4148,7 @@ int main()
 
 我们可以先将h[]中每个位置上的值初始化成一个很大的数，如何通过除留余数法来找到每个数映射后的地址，如果该位置上有数，那么就继续向下一个位置探测，如果探测到最后一个位置，从第0个位置再进行探测。
 
-![](https://i-blog.csdnimg.cn/blog_migrate/72e907f29105f73ab1b52b77fd3e36fe.png)
+![](assets/72e907f29105f73ab1b52b77fd3e36fe.png)
 
 查找一个数也是类似的，如果这个数待探测的位置上有数，那么就向下一个位置探测，如果最终探测的位置上面的数为很大的数，那么查找失败，哈希表中没有该数。
 
@@ -4156,7 +4156,7 @@ int main()
 
 拉链法不同于开放地址法的是，把每个位置看成一个单链表，如果要某个数通过除留余数法算出来的数位置上有数，不用向后探测，只需要用头插法插入到该位置上的单链表上，查找也是如此。
 
-![](https://i-blog.csdnimg.cn/blog_migrate/cfef09caa8bd9419cc2a5ddf6857dff3.png)
+![](assets/cfef09caa8bd9419cc2a5ddf6857dff3.png)
 
 ### 24.1 模拟散列表
 
@@ -4387,7 +4387,7 @@ h[3]\="ABC"的哈希值
 
 区间和公式 h[l,r]\=h[r]−h[l−1]×P\^(r−l+1)；
 
-![](https://i-blog.csdnimg.cn/blog_migrate/1885060057fbb818afbd2f4d2d0ef4b1.png)
+![](assets/1885060057fbb818afbd2f4d2d0ef4b1.png)
 
 ```cpp
 #include <iostream>
@@ -4473,7 +4473,7 @@ int main()
 
 思路：
 
-![](https://i-blog.csdnimg.cn/blog_migrate/2cd82d620e8930292975a7f4c765f588.png)
+![](assets/2cd82d620e8930292975a7f4c765f588.png)
 
 AC代码
 
@@ -4746,7 +4746,7 @@ void dfs(int u) {
 
 4
 
-![](https://i-blog.csdnimg.cn/blog_migrate/29a0d93ff6782c402a6e3b973ef2d272.png)
+![](assets/29a0d93ff6782c402a6e3b973ef2d272.png)
 
 每次算出他下面的size和n-size进行比较即可。
 
@@ -5332,9 +5332,9 @@ int main()
 
 ## 30. 背包问题
 
-![](https://i-blog.csdnimg.cn/blog_migrate/90e64bc21a47ad592cc043a56e0b915f.png)
+![](assets/90e64bc21a47ad592cc043a56e0b915f.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/0b561cb994cc363a9442b6b30280dcf1.png)
+![](assets/0b561cb994cc363a9442b6b30280dcf1.png)
 
 ### 30.1 01背包问题
 
@@ -5380,7 +5380,7 @@ int main()
 
 思路：
 
-![](https://i-blog.csdnimg.cn/blog_migrate/44dfb9e3cf8ec715bef668ebda0f59fa.png)
+![](assets/44dfb9e3cf8ec715bef668ebda0f59fa.png)
 
 ```cpp
 #include<iostream>
@@ -5486,7 +5486,7 @@ int main() {
 
 完全背包是求前缀的最大值，第一次求前1项的max，第二次求前2项的max，......
 
-![](https://i-blog.csdnimg.cn/blog_migrate/6ff7e5d014ed82c13b63112256e60b9b.png)
+![](assets/6ff7e5d014ed82c13b63112256e60b9b.png)
 
 ```cpp
 #include<iostream>
@@ -5800,7 +5800,7 @@ int main()
 
 8
 
-![](https://i-blog.csdnimg.cn/blog_migrate/7c1d8d9aa1774ec9fe17aad5b89d7a3e.png)
+![](assets/7c1d8d9aa1774ec9fe17aad5b89d7a3e.png)
 
 ```cpp
 #include<iostream>
@@ -5962,11 +5962,11 @@ int main()
 
 思路：
 
-![](https://i-blog.csdnimg.cn/blog_migrate/57886ff80daf7a6054f30456904ce55b.png)
+![](assets/57886ff80daf7a6054f30456904ce55b.png)
 
 模拟样例
 
-![](https://i-blog.csdnimg.cn/blog_migrate/f8dd7161decc6c75692add64c785aa5c.png)
+![](assets/f8dd7161decc6c75692add64c785aa5c.png)
 
 ```cpp
 #include <cstring>
@@ -6077,7 +6077,7 @@ int main()
 
 6
 
-![](https://i-blog.csdnimg.cn/blog_migrate/b873d2cd8c6fc38b849f99998069887d.png)
+![](assets/b873d2cd8c6fc38b849f99998069887d.png)
 
 ```cpp
 #include<iostream>
@@ -6188,7 +6188,7 @@ int main()
 
 数字三角形的模型
 
-![](https://i-blog.csdnimg.cn/blog_migrate/2e9ccc4cb4f2260b4c770be04e8fd567.png)
+![](assets/2e9ccc4cb4f2260b4c770be04e8fd567.png)
 
 ```cpp
 #include <iostream>
@@ -6258,7 +6258,7 @@ int main()
 
 思路：
 
-![](https://i-blog.csdnimg.cn/blog_migrate/52f656a66f45d6fd9e70b074a1d28715.png)
+![](assets/52f656a66f45d6fd9e70b074a1d28715.png)
 
 ```cpp
 #include<iostream>
@@ -6316,7 +6316,7 @@ int main()
 
 4
 
-![](https://i-blog.csdnimg.cn/blog_migrate/354039034d018da34ca45ed8780445af.png)
+![](assets/354039034d018da34ca45ed8780445af.png)
 
 ```cpp
 #include <iostream>
@@ -6389,7 +6389,7 @@ abedc
 
 3
 
-![](https://i-blog.csdnimg.cn/blog_migrate/2b0ef08b522afced0f1047cd12cdf2ab.png)
+![](assets/2b0ef08b522afced0f1047cd12cdf2ab.png)
 
 ```cpp
 #include<iostream>
@@ -6466,7 +6466,7 @@ AGTAAGTAGGC
 
 4
 
-![](https://i-blog.csdnimg.cn/blog_migrate/40e59d5635fb9f4b69f62f8aa5690afe.png)
+![](assets/40e59d5635fb9f4b69f62f8aa5690afe.png)
 
 ```cpp
 #include <iostream>
@@ -6644,7 +6644,7 @@ int main()
 
 22
 
-![](https://i-blog.csdnimg.cn/blog_migrate/bc14224b4acf66c37fd141bc3cf0014c.png)
+![](assets/bc14224b4acf66c37fd141bc3cf0014c.png)
 
 ```cpp
 #include<iostream>
@@ -6684,9 +6684,9 @@ int main()
 
 #### 5.4.1 整数划分
 
-![](https://i-blog.csdnimg.cn/blog_migrate/726c61e2012939513de53e41287f792a.png)
+![](assets/726c61e2012939513de53e41287f792a.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/7b2e71bf9b1ab919eb38c7b6b1caa496.png)
+![](assets/7b2e71bf9b1ab919eb38c7b6b1caa496.png)
 
 思路：完全背包求方案数的模型。
 
@@ -6762,13 +6762,13 @@ int main()
 
 #### 5.5.1 计数问题
 
-![](https://i-blog.csdnimg.cn/blog_migrate/228f9f0913c5666baebfad40b953ed49.png)
+![](assets/228f9f0913c5666baebfad40b953ed49.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/aafffb90418dce496407b63771e1c91a.png)
+![](assets/aafffb90418dce496407b63771e1c91a.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/568169ae05e74ecf9e0347b60deeabb6.png)
+![](assets/568169ae05e74ecf9e0347b60deeabb6.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/5e795d7582a9ae20ef18deb058be1b61.png)
+![](assets/5e795d7582a9ae20ef18deb058be1b61.png)
 
 ```cpp
 #include <iostream>
@@ -6852,7 +6852,7 @@ int main()
 
 #### 5.6.1 没有上司的舞会
 
-![](https://i-blog.csdnimg.cn/blog_migrate/6e5c224f6d1afe94c36f2ab73504eb84.png)
+![](assets/6e5c224f6d1afe94c36f2ab73504eb84.png)
 
 ```cpp
 #include<bits/stdc++.h>
@@ -6990,9 +6990,9 @@ int main() {
 
 如我们将9999 1 100 1000进行离散化：
 
-![](https://i-blog.csdnimg.cn/blog_migrate/a4ea470254ab7e4d70dc833a08af4d11.png)
+![](assets/a4ea470254ab7e4d70dc833a08af4d11.png)
 
-![](https://i-blog.csdnimg.cn/blog_migrate/76aa4f87f0119c657b9d05c8d06367af.png)
+![](assets/76aa4f87f0119c657b9d05c8d06367af.png)
 
 ### 6.1 离散化方法1--map哈希映射离散化后的值(考虑相对大小)，查询离散化后值的时间复杂度O(1)
 
@@ -7188,7 +7188,7 @@ Q ab
 
 2.图解过程
 
-![](https://i-blog.csdnimg.cn/blog_migrate/83270171152366040f4659ff6fe2b727.png)
+![](assets/83270171152366040f4659ff6fe2b727.png)
 
 3.代码展示
 
@@ -7290,7 +7290,7 @@ cout<<res<<endl;
 
 2. 图解
 
-![](https://i-blog.csdnimg.cn/blog_migrate/82303ebc225afc41c3e3cb901dca1d01.png)
+![](assets/82303ebc225afc41c3e3cb901dca1d01.png)
 
 ```cpp
 int res=0;
@@ -7430,7 +7430,7 @@ int main() {
 
 ## 9. 最短路问题
 
-![](https://i-blog.csdnimg.cn/blog_migrate/710e2ad24e0e65056eb2752af8e928a6.png)
+![](assets/710e2ad24e0e65056eb2752af8e928a6.png)
 
 ### 9.1 Dijkstra
 
@@ -7474,7 +7474,7 @@ int main() {
 
 3
 
-![](https://i-blog.csdnimg.cn/blog_migrate/e2ab2135763858a126a5fcc84e00f445.png)
+![](assets/e2ab2135763858a126a5fcc84e00f445.png)
 
 ```cpp
 #include<iostream>
@@ -7715,7 +7715,7 @@ int main()
 
 思路：
 
-![](https://i-blog.csdnimg.cn/blog_migrate/3d1aba1bb639d2057f8613a2f264550d.png)
+![](assets/3d1aba1bb639d2057f8613a2f264550d.png)
 
 ```cpp
 #include <cstring>
@@ -7816,7 +7816,7 @@ int main()
 
 spfa用的最多
 
-![](https://i-blog.csdnimg.cn/blog_migrate/2a78669a2ff389d436d03044ff760b75.png)
+![](assets/2a78669a2ff389d436d03044ff760b75.png)
 
 ```cpp
 #include <cstring>
@@ -7932,7 +7932,7 @@ int main()
 
 Yes
 
-![](https://i-blog.csdnimg.cn/blog_migrate/ff75967090f174750da296d2e606251b.png)
+![](assets/ff75967090f174750da296d2e606251b.png)
 
 ```cpp
 #include <cstring>
@@ -8066,7 +8066,7 @@ impossible
 
 多源汇最短路
 
-![](https://i-blog.csdnimg.cn/blog_migrate/6c12dce82dd974e3fbd4adbf290934e0.png)
+![](assets/6c12dce82dd974e3fbd4adbf290934e0.png)
 
 ```cpp
 #include<iostream>

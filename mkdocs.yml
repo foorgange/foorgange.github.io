@@ -215,8 +215,6 @@ nav:
       - 前后端:
           - 技术学习/前后端/Vue入门.md
           - 技术学习/前后端/js入门.md
-          - 技术学习/前后端/mybig-event.md
-          - 技术学习/前后端/java开发常用注解.md
           - 技术学习/前后端/java高级：自定义注解，反射和动态代理.md
           - 技术学习/前后端/vue目录架构.md
           - 技术学习/前后端/深入浅出理解 IOC（控制反转）与 DI（依赖注入）.md
@@ -227,7 +225,6 @@ nav:
       - 人工智能:
           - 技术学习/人工智能/一套基础的大模型训练命令解析.md
           - 技术学习/人工智能/拒绝繁琐概念 _ 零基础基于pytorch手写构建一个神经网络.md
-          - 技术学习/人工智能/基于 Ollama DeepSeek、Dify RAG 和 Fay 框架的高考咨询 AI 交互系统.md
           - yolov8和yolov11入门: 技术学习/人工智能/yolov8和yolov11入门.md/yolov8和yolov11入门.md
           - Windows系统上本地部署dify并接入ollama大模型: 技术学习/人工智能/Windows系统上本地部署dify并接入ollama大模型.md
           - SED项目复现学习实录: 技术学习/人工智能/SED项目复现学习实录.md/SED项目复现学习实录.md
