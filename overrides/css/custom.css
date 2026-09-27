@@ -4,6 +4,18 @@
   --base-border-radius: 0.5rem;
 }
 
+/* 首页标题专用字体：霞鹜文楷 LXGW WenKai（SIL OFL 1.1，可自由分发）
+   自托管子集，仅含标题所需字形（9 个汉字 + ASCII + 常用标点），8.7KB，不依赖任何外部 CDN。
+   家族名特意加 "Hero" 后缀：避免与其它同名 webfont（如 CDN 上的 LXGW WenKai）冲突而被覆盖。
+   来源：https://github.com/lxgw/LxgwWenKai  子集化脚本见工作目录 make_subset.py */
+@font-face {
+  font-family: "LXGW WenKai Hero";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/lxgw-wenkai-hero.woff2") format("woff2");
+}
+
 .md-typeset h1, .md-typeset h2 {
   font-weight: 600;
 }
@@ -344,9 +356,13 @@ body.homepage .hero-section h1 {
   margin-right: auto;  
   text-align: center; 
   color: black !important; 
-  /* text-shadow: 0 0 3px rgba(255, 255, 255, 0.7), 0 0 5px rgba(255, 255, 255, 0.5); */ /* Removed text-shadow */
+  /* 手写体笔画细，加一层极淡的白色柔光，避免在花叶照片上被"吃掉" */
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(255, 255, 255, 0.35);
+  /* 霞鹜文楷（自托管子集，8.7KB）：楷体手写感，配文学向的个人站点；后续依次回退到系统楷体/宋体 */
+  font-family: "LXGW WenKai Hero", "KaiTi", "楷体", "STKaiti", "Kaiti SC", "Songti SC", "SimSun", serif;
+  font-weight: 400 !important; /* 文楷自带字重已调好，再"加粗"会让笔画发糊 */
   font-size: 3em !important; 
-  letter-spacing: 0.1em !important; 
+  letter-spacing: 0.06em !important; /* 楷体笔画舒展，字距略收更整 */
   margin-bottom: 0.2em; /* Added to reduce space below h1 */
 }
 

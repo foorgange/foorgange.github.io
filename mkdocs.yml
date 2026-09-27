@@ -174,8 +174,9 @@ extra_css:
   - css/card.css                   # 卡片组件样式
   - css/flink.css                  # 友链样式
   - css/tasklist.css               # 自定义任务列表样式
-  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
-  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+  # 说明：原先此处从 gcore.jsdelivr.net 引入两个霞鹜文楷 webfont 样式表（站点从未使用它们渲染任何文字，
+  # 且它们同样声明 "LXGW WenKai" 家族名、加载顺序在 custom.css 之后，会把首页标题的自托管子集覆盖掉；
+  # gcore 在国内多数网络不可达，导致标题静默回退到系统字体）。现改为 overrides/fonts/ 下自托管 8.7KB 子集。
 
 # 额外数据，可用于模板或插件
 extra:
