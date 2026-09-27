@@ -26,7 +26,7 @@ public class OrderService {
 * **难以测试**：在单元测试中，无法轻松替换`UserRepository`​为模拟实现（如`MockUserRepository`​）。
 * **扩展性差**：若需更换数据访问层的实现，需修改`OrderService`​的代码，违反了开闭原则。
 
-理想状态是：`OrderService`​不关心`UserRepository`​的具体实现，而是由外部提供依赖。这正是\*\*控制反转（IoC）**和**依赖注入（DI）\*\*旨在解决的问题。
+理想状态是：`OrderService`​不关心`UserRepository`​的具体实现，而是由外部提供依赖。这正是**控制反转（IoC）**和**依赖注入（DI）**旨在解决的问题。
 
 ---
 

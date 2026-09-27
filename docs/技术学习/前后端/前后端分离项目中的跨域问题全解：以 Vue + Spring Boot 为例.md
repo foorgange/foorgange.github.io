@@ -33,7 +33,7 @@ Access to XMLHttpRequest at 'http://localhost:8081/xxx' from origin 'http://loca
 
 ## 二、什么是 CORS？
 
-\*\*CORS（Cross-Origin Resource Sharing）\*\*是浏览器与服务器之间的一种协议，允许浏览器向服务器发起跨域请求。它的核心是由后端服务器设置 HTTP 响应头，告诉浏览器：“这个请求我允许”。
+**CORS（Cross-Origin Resource Sharing）**是浏览器与服务器之间的一种协议，允许浏览器向服务器发起跨域请求。它的核心是由后端服务器设置 HTTP 响应头，告诉浏览器：“这个请求我允许”。
 
 ---
 

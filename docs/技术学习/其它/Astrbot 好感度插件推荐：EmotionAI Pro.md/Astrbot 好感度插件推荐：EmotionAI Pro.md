@@ -284,7 +284,7 @@ https://github.com/foorgange/astrbot-plugin-emotionai_pro（项目地址）
 
 ### 结语
 
-\*\*EmotionAI Pro \*\* 不只是一个“好感度插件”，而是一个：
+**EmotionAI Pro** 不只是一个“好感度插件”，而是一个：
 
 > **真实可养成的 AI 内心世界**
 >  **渐进式关系演进系统**
