@@ -7,3 +7,6 @@ site/
 # Python
 __pycache__/
 *.pyc
+
+# 本地长期记忆（AI 协作背景档案）——含本机路径与私有备注，只留本地，不进公开仓库
+MEMORY.md
