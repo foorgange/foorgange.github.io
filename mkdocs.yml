@@ -88,13 +88,13 @@ plugins:
       type: datetime                 # 显示完整的日期和时间
       timezone: Asia/Shanghai        # 设置时区为上海
       enable_creation_date: false    # 不显示页面创建日期，只显示最后更新时间
-      exclude:                       # 排除以下页面的日期显示
+      exclude:                       # 排除以下页面的日期显示（原先写的是别的项目路径，实际不存在，
+                                     # 导致索引页仍显示"最后更新"；此处改为本站真实路径）
         - index.md
-        - backend/index.md
-        - notes/index.md
-        - summaries/index.md
-        - links/index.md
-        - blogs/index.md
+        - 技术学习/index.md
+        - 文学作品/index.md
+        - 日周记总结/index.md
+        - About/index.md
         
   - minify:                          # 压缩 HTML 文件以减小体积
                                      # 需要安装 `pip install mkdocs-minify-plugin`
@@ -230,6 +230,7 @@ nav:
           - 技术学习/人工智能/基于 Ollama DeepSeek、Dify RAG 和 Fay 框架的高考咨询 AI 交互系统.md
           - yolov8和yolov11入门: 技术学习/人工智能/yolov8和yolov11入门.md/yolov8和yolov11入门.md
           - Windows系统上本地部署dify并接入ollama大模型: 技术学习/人工智能/Windows系统上本地部署dify并接入ollama大模型.md
+          - SED项目复现学习实录: 技术学习/人工智能/SED项目复现学习实录.md/SED项目复现学习实录.md
           - 泰山第一次培训：python数据处理: 技术学习/人工智能/泰山第一次培训：python数据处理.md/泰山第一次培训：python数据处理.md
           - 泰山第二次培训：ResNet图像分类: 技术学习/人工智能/泰山第二次培训：ResNet图像分类.md/泰山第二次培训：ResNet图像分类.md
           - 泰山第二次培训：UNet图像分割: 技术学习/人工智能/泰山第二次培训：UNet图像分割.md/泰山第二次培训：UNet图像分割.md
@@ -269,7 +270,7 @@ nav:
           - 咏情: 文学作品/诗词古文/咏情.md
           - 少年游 · 作韵诵友人生辰: 文学作品/诗词古文/少年游 · 作韵诵友人生辰.md
           - 少年游-欲寻秋雨覆新春: 文学作品/诗词古文/少年游-欲寻秋雨覆新春.md
-          - 念奴娇 · 白日梦: 文学作品/诗词古文/念奴娇 · 白日梦 .md
+          - 念奴娇 · 白日梦: 文学作品/诗词古文/念奴娇 · 白日梦.md
           - 成长: 文学作品/诗词古文/成长.md
           - 文史 · 景操本纪: 文学作品/诗词古文/文史 · 景操本纪.md
           - 新生 · 赠友: 文学作品/诗词古文/新生 · 赠友.md
@@ -277,7 +278,7 @@ nav:
           - 晨起: 文学作品/诗词古文/晨起.md
           - 水调歌头-记梦: 文学作品/诗词古文/水调歌头-记梦.md
           - 江城子 ·LPL风起长安: 文学作品/诗词古文/江城子 ·LPL风起长安.md
-          - 浣溪沙-兴逸壮思觅蜃楼: 文学作品/诗词古文/浣溪沙-兴逸壮思觅蜃楼 .md
+          - 浣溪沙-兴逸壮思觅蜃楼: 文学作品/诗词古文/浣溪沙-兴逸壮思觅蜃楼.md
           - 满江红 · 如厕有感: 文学作品/诗词古文/满江红 · 如厕有感.md
           - 漠河春觉: 文学作品/诗词古文/漠河春觉.md
           - 热坟: 文学作品/诗词古文/热坟.md

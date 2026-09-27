@@ -170,23 +170,18 @@ function getCurrentTheme() {
     const bodyElement = document.body;
     const isHomepage = bodyElement && bodyElement.classList.contains('homepage');
     
-    console.log('Is homepage:', isHomepage);
     
     // 检查body元素的data-md-color-scheme属性
     const scheme = bodyElement.getAttribute('data-md-color-scheme');
     
-    console.log('Theme detection - body scheme:', scheme, 'isHomepage:', isHomepage);
     
     // Material for MkDocs uses 'slate' for dark mode and 'default' for light mode
     // 根据CSS实现：default=日间模式，slate=夜间模式
     if (scheme === 'slate') {
-        console.log('Detected: DARK mode (slate)');
         return 'dark';
     } else if (scheme === 'default') {
-        console.log('Detected: LIGHT mode (default)');
         return 'light';
     } else {
-        console.log('Detected: UNKNOWN scheme:', scheme, '- defaulting to LIGHT mode');
         return 'light';
     }
 }
@@ -242,13 +237,11 @@ function loadThemeImage() {
 // Observer to watch for theme changes
 function observeThemeChanges() {
     let lastTheme = getCurrentTheme();
-    console.log('Setting up theme observer, initial theme:', lastTheme);
     
     // Function to check theme changes
     function checkThemeChange() {
         const currentTheme = getCurrentTheme();
         if (currentTheme !== lastTheme) {
-            console.log('Theme changed from', lastTheme, 'to', currentTheme);
             lastTheme = currentTheme;
             loadThemeImage();
         }
@@ -257,7 +250,6 @@ function observeThemeChanges() {
     // 直接监听Material for MkDocs的主题切换radio按钮
     function setupPaletteListeners() {
         const paletteInputs = document.querySelectorAll('input[data-md-color-scheme]');
-        console.log('Found palette radio inputs:', paletteInputs.length);
         
         paletteInputs.forEach((input, index) => {
             console.log(`Palette input ${index}:`, {
@@ -290,23 +282,19 @@ function observeThemeChanges() {
     
     // MutationObserver for all data-md-color-* attribute changes (作为备用)
     const observer = new MutationObserver(function(mutations) {
-        console.log('MutationObserver triggered, mutations:', mutations.length);
         let themeRelatedChange = false;
         mutations.forEach(function(mutation) {
-            console.log('Mutation type:', mutation.type, 'attribute:', mutation.attributeName);
             if (mutation.type === 'attributes' && mutation.attributeName && mutation.attributeName.startsWith('data-md-color-')) {
                 themeRelatedChange = true;
             }
         });
         
         if (themeRelatedChange) {
-            console.log('Theme-related attribute changed, checking theme...');
             setTimeout(checkThemeChange, 50);
         }
     });
     
     // Observe the body element for all data-md-color-* changes
-    console.log('Starting to observe body element for theme changes');
     observer.observe(document.body, {
         attributes: true,
         attributeFilter: ['data-md-color-scheme', 'data-md-color-primary', 'data-md-color-accent']
@@ -314,11 +302,9 @@ function observeThemeChanges() {
     
     // 如果没有找到palette按钮，使用定时检查作为备用
     if (!paletteFound) {
-        console.log('No palette inputs found, using periodic check as fallback');
         const periodicCheck = setInterval(function() {
             const currentTheme = getCurrentTheme();
             if (currentTheme !== lastTheme) {
-                console.log('Periodic check detected theme change from', lastTheme, 'to', currentTheme);
                 lastTheme = currentTheme;
                 loadThemeImage();
             }
@@ -330,29 +316,23 @@ function observeThemeChanges() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing theme detection...');
     
     // 检查是否在首页，只在首页启动樱花动画
     const isHomepage = document.body && document.body.classList.contains('homepage');
-    console.log('Is homepage on DOM load:', isHomepage);
     
     if (!isHomepage) {
-        console.log('Not on homepage, skipping sakura animation initialization');
         return;
     }
     
     // Wait a bit for Material theme to be fully initialized
     setTimeout(function() {
-        console.log('Starting theme image loading on homepage...');
         loadThemeImage();
         observeThemeChanges();
     }, 100);
     
     // Also check after a longer delay to catch any late theme initialization
     setTimeout(function() {
-        console.log('Secondary theme check on homepage...');
         const currentTheme = getCurrentTheme();
-        console.log('Secondary check - current theme:', currentTheme);
         loadThemeImage();
     }, 1000);
 });
@@ -363,9 +343,7 @@ if (typeof MutationObserver !== 'undefined') {
         mutations.forEach(function(mutation) {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const isHomepage = document.body.classList.contains('homepage');
-                console.log('Body class changed, is homepage:', isHomepage);
                 if (isHomepage && !img) {
-                    console.log('Homepage class added, initializing sakura animation');
                     loadThemeImage();
                     observeThemeChanges();
                 }
