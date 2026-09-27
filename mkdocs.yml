@@ -222,6 +222,8 @@ nav:
           - 技术学习/前后端/从 Spring Boot 到 Django —— 后端开发技术类比学习.md
           - 技术学习/前后端/前后端分离项目中的跨域问题全解：以 Vue + Spring Boot 为例.md
           - 技术学习/前后端/前后端是怎么对接起来的？（ Vue 与 Spring Boot）.md
+          - 自用项目模拟面经50问学习: 技术学习/前后端/自用项目模拟面经50问学习.md
+          - java面向对象进阶: 技术学习/前后端/java面向对象进阶.md
       - 人工智能:
           - 技术学习/人工智能/一套基础的大模型训练命令解析.md
           - 技术学习/人工智能/拒绝繁琐概念 _ 零基础基于pytorch手写构建一个神经网络.md
@@ -243,6 +245,11 @@ nav:
           - 技术学习/其它/（自用）PowerShell常用命令自查文档.md
           - 技术学习/其它/（自用）cmd常用命令自查文档.md
           - 彻底解决docker代理配置与无法拉取镜像问题: 技术学习/其它/彻底解决docker代理配置与无法拉取镜像问题.md/彻底解决docker代理配置与无法拉取镜像问题.md
+          - Astrbot 好感度插件推荐：EmotionAI Pro: 技术学习/其它/Astrbot 好感度插件推荐：EmotionAI Pro.md/Astrbot 好感度插件推荐：EmotionAI Pro.md
+          - 在vs code里使用deepseek harness：我做的插件又更新啦！: 技术学习/其它/在vs code里使用deepseek harness：我做的插件又更新啦！.md/在vs code里使用deepseek harness：我做的插件又更新啦！.md
+          - ssh远程连接服务器教程: 技术学习/其它/ssh远程连接服务器教程.md/ssh远程连接服务器教程.md
+          - Windows ↔ Linux 常用快捷键速查及宝塔服务器端常用操作: 技术学习/其它/Windows ↔ Linux 常用快捷键速查及宝塔服务器端常用操作.md
+          - fork的仓库怎么使用git rebase与git merge同步上游仓库的更新及解决冲突问题的总结: 技术学习/其它/fork的仓库怎么使用git rebase与git merge同步上游仓库的更新及解决冲突问题的总结.md
   - 文学作品:
       - 概览: 文学作品/index.md
       - 小说: 
